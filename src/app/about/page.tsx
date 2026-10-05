@@ -46,7 +46,7 @@ export default function AboutPage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-primary-400" />
                 {aboutHero.badge}
               </div>
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight">
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-6 leading-tight">
                 {aboutHero.headline}{" "}
                 <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
                   {aboutHero.headlineAccent}
