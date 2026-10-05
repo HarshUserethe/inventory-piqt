@@ -31,7 +31,7 @@ export default function ServicesPage() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
               Our Services
             </div>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-6 leading-tight">
+            <h1 className="font-display text-[2.375rem] sm:text-[2.75rem] lg:text-[3.5rem] font-medium text-white mb-6 leading-tight">
               The Complete BPM{" "}
               <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
                 Service Portfolio
