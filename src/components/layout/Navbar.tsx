@@ -5,16 +5,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { LuTarget, LuZap, LuRepeat, LuFileText, LuChartBar, LuGlobe } from "react-icons/lu";
 import { navLinks, siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 const servicesDropdown = [
-  { label: "BPM Consulting & Strategy", href: "/services#bpm-consulting", icon: "🎯" },
-  { label: "Intelligent Process Automation", href: "/services#automation", icon: "⚡" },
-  { label: "Workflow Optimization", href: "/services#workflow", icon: "🔄" },
-  { label: "Intelligent Document Processing", href: "/services#idp", icon: "📄" },
-  { label: "Process Analytics & Insights", href: "/services#analytics", icon: "📊" },
-  { label: "Managed BPO Services", href: "/services#bpo", icon: "🌐" },
+  { label: "BPM Consulting & Strategy", href: "/services#bpm-consulting", Icon: LuTarget },
+  { label: "Intelligent Process Automation", href: "/services#automation", Icon: LuZap },
+  { label: "Workflow Optimization", href: "/services#workflow", Icon: LuRepeat },
+  { label: "Intelligent Document Processing", href: "/services#idp", Icon: LuFileText },
+  { label: "Process Analytics & Insights", href: "/services#analytics", Icon: LuChartBar },
+  { label: "Managed BPO Services", href: "/services#bpo", Icon: LuGlobe },
 ];
 
 export default function Navbar() {
@@ -122,18 +123,21 @@ export default function Navbar() {
                         onMouseLeave={() => setServicesOpen(false)}
                       >
                         <div className="w-72 bg-white rounded-2xl shadow-2xl border border-neutral-100 p-2 overflow-hidden">
-                          {servicesDropdown.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary-50 group/item transition-all duration-150"
-                            >
-                              <span className="text-xl leading-none">{item.icon}</span>
-                              <span className="text-[0.85rem] font-medium text-neutral-700 group-hover/item:text-primary-600 transition-colors">
-                                {item.label}
-                              </span>
-                            </Link>
-                          ))}
+                          {servicesDropdown.map((item) => {
+                            const IconComponent = item.Icon;
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary-50 group/item transition-all duration-150"
+                              >
+                                <IconComponent className="w-5 h-5 text-primary-600 group-hover/item:scale-110 transition-transform shrink-0" />
+                                <span className="text-[0.85rem] font-medium text-neutral-700 group-hover/item:text-primary-600 transition-colors">
+                                  {item.label}
+                                </span>
+                              </Link>
+                            );
+                          })}
                           <div className="border-t border-neutral-100 mt-1 pt-1">
                             <Link
                               href="/services"

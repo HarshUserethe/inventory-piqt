@@ -66,7 +66,6 @@ export const navLinks = [
   { label: "Why Us", href: "/why-us" },
   { label: "Careers", href: "/careers" },
   { label: "FAQs", href: "/faqs" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const footerLinks = {
