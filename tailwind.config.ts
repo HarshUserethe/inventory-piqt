@@ -9,8 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-plus-jakarta)", "system-ui", "sans-serif"],
+        sans: ["var(--font-gilroy)", "Gilroy", "system-ui", "sans-serif"],
+        display: ["var(--font-gilroy)", "Gilroy", "system-ui", "sans-serif"],
+        gilroy: ["var(--font-gilroy)", "Gilroy", "system-ui", "sans-serif"],
       },
       colors: {
         primary: {

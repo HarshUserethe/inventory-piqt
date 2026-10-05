@@ -1,18 +1,38 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+const gilroy = localFont({
+  src: [
+    {
+      path: "../fonts/Gilroy-Regular.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Gilroy-Medium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Gilroy-SemiBold.woff",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Gilroy-Bold.woff",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Gilroy-ExtraBold.woff",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-gilroy",
   display: "swap",
 });
 
@@ -62,8 +82,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
-      <body className="antialiased">
+    <html lang="en" className={`${gilroy.variable} font-sans`}>
+      <body className="antialiased font-sans">
         <Navbar />
         <main>{children}</main>
         <Footer />

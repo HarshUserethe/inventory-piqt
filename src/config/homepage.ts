@@ -7,7 +7,7 @@ export const heroContent = {
   headline: "We Make Your Business Work",
   headlineAccent: "Smarter, Faster & 24/7.",
   description:
-    "We are a 24/7 global solution oriented call center aimed at meeting the customer relation goals of businesses. We fill in the gap for business owners by employing a highly skilled, dedicated and well-trained cadre of accent-neutral customer service professionals and business support specialists.",
+    "We are a 24/7 global call center empowering businesses with dedicated, accent-neutral customer support and business specialists. We fill operational gaps, helping business owners achieve seamless customer relations and scale efficiently.",
   primaryCta: { label: "Get In Touch", href: "/contact" },
   secondaryCta: { label: "Explore Our Services", href: "/services" },
   trustedBy: ["Zendesk", "Twilio", "Five9", "Salesforce"],
