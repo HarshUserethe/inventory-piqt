@@ -26,18 +26,18 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-primary-950/60 to-neutral-950" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-primary-600/8 rounded-full blur-[120px]" />
         <div className="container-custom relative z-10">
-          <div className="max-w-5xl">
+          <div className="max-w-6xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-600/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
               Our Services
             </div>
-            <h1 className="font-display text-[2.375rem] sm:text-[2.75rem] lg:text-[3.5rem] font-medium text-white mb-6 leading-tight">
+            <h1 className="font-display text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-extrabold text-white mb-6 leading-[1.1] sm:leading-[1.05] tracking-tight max-w-6xl">
               The Complete BPM{" "}
-              <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+              <span className="animate-shiny-text font-extrabold inline-block drop-shadow-[0_0_25px_rgba(192,132,252,0.35)]">
                 Service Portfolio
               </span>
             </h1>
-            <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
+            <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal max-w-4xl">
               From strategy and consulting to automation and managed services — we provide the full spectrum of BPM capabilities your enterprise needs to operate at peak performance.
             </p>
           </div>

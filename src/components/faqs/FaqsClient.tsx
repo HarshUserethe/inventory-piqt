@@ -73,13 +73,13 @@ export default function FaqsClient() {
             <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
             Frequently Asked Questions
           </div>
-          <h1 className="font-display text-[2.375rem] sm:text-[2.75rem] lg:text-[3.5rem] font-medium text-white mb-6 leading-tight">
+          <h1 className="font-display text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-extrabold text-white mb-6 leading-[1.1] sm:leading-[1.05] tracking-tight max-w-6xl mx-auto">
             Got Questions?{" "}
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="animate-shiny-text font-extrabold inline-block drop-shadow-[0_0_25px_rgba(192,132,252,0.35)]">
               We Have Answers.
             </span>
           </h1>
-          <p className="text-base sm:text-lg text-neutral-300 leading-relaxed">
+          <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal max-w-3xl mx-auto">
             Everything you need to know about our services, engagement model, technology, and more.
           </p>
         </div>
