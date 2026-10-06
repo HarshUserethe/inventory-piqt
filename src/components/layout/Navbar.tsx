@@ -225,17 +225,17 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-40 lg:hidden transition-all duration-300",
+          "fixed inset-0 z-[60] lg:hidden transition-all duration-300",
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
         <div
-          className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         />
         <div
           className={cn(
-            "absolute top-0 right-0 h-full w-80 max-w-full bg-white shadow-2xl transition-transform duration-300",
+            "absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transition-transform duration-300",
             isOpen ? "translate-x-0" : "translate-x-full"
           )}
         >
@@ -248,7 +248,7 @@ export default function Navbar() {
                   alt="Process IQ Tech"
                   width={635}
                   height={166}
-                  className="h-8 w-auto object-contain"
+                  className="h-7 sm:h-8 w-auto object-contain"
                 />
               </Link>
               <button

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/providers/SmoothScroll";
 
 const gilroy = localFont({
   src: [
@@ -84,9 +85,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${gilroy.variable} font-sans`}>
       <body className="antialiased font-sans">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
