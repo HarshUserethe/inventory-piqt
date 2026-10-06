@@ -71,7 +71,7 @@ export const siteSections: SiteSectionsConfig = {
     hero: true,
     culture: true,
     benefits: true,
-    openPositions: true, // Set to false to hide open positions section
+    openPositions: false, // Set to false to hide open positions section
     resumeUpload: true,  // Set to false to hide resume upload section
   },
 
@@ -81,7 +81,7 @@ export const siteSections: SiteSectionsConfig = {
   homepage: {
     hero: true,
     valueProposition: true,
-    stats: true,
+    stats: false,
     servicesOverview: true,
     bpmAdvantages: true,
     process: true,
