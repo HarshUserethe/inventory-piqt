@@ -92,25 +92,36 @@ export default function Navbar() {
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 if (link.label === "Services") {
+                  const isServicesActive = pathname.startsWith("/services");
                   return (
                     <div key={link.label} className="relative group">
                       <button
                         className={cn(
-                          "flex items-center gap-1 px-4 py-2.5 rounded-lg text-[0.9rem] font-medium transition-all duration-200",
-                          isActive
+                          "relative flex items-center gap-1.5 px-3.5 py-2 text-[0.9rem] font-medium transition-colors duration-200",
+                          isServicesActive
                             ? isScrolled
-                              ? "text-primary-600 bg-primary-50"
-                              : "text-white bg-white/15"
+                              ? "text-primary-600 font-semibold"
+                              : "text-white font-semibold"
                             : isScrolled
-                            ? "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50"
-                            : "text-neutral-300 hover:text-white hover:bg-white/10"
+                            ? "text-neutral-600 hover:text-neutral-900"
+                            : "text-neutral-300 hover:text-white"
                         )}
                         onMouseEnter={() => setServicesOpen(true)}
                         onMouseLeave={() => setServicesOpen(false)}
                         aria-expanded={servicesOpen}
                       >
-                        Services
+                        <span>Services</span>
                         <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                        <span
+                          className={cn(
+                            "absolute bottom-0 left-3.5 right-3.5 h-[2px] rounded-full transition-all duration-200 origin-center",
+                            isServicesActive
+                              ? isScrolled
+                                ? "bg-primary-600 opacity-100 scale-x-100"
+                                : "bg-white opacity-100 scale-x-100"
+                              : "bg-current opacity-0 scale-x-0 group-hover:opacity-50 group-hover:scale-x-100"
+                          )}
+                        />
                       </button>
 
                       {/* Dropdown */}
@@ -159,17 +170,27 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "px-4 py-2.5 rounded-lg text-[0.9rem] font-medium transition-all duration-200",
+                      "relative px-3.5 py-2 text-[0.9rem] font-medium transition-colors duration-200 group",
                       isActive
                         ? isScrolled
-                          ? "text-primary-600 bg-primary-50"
-                          : "text-white bg-white/15"
+                          ? "text-primary-600 font-semibold"
+                          : "text-white font-semibold"
                         : isScrolled
-                        ? "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50"
-                        : "text-neutral-300 hover:text-white hover:bg-white/10"
+                        ? "text-neutral-600 hover:text-neutral-900"
+                        : "text-neutral-300 hover:text-white"
                     )}
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    <span
+                      className={cn(
+                        "absolute bottom-0 left-3.5 right-3.5 h-[2px] rounded-full transition-all duration-200 origin-center",
+                        isActive
+                          ? isScrolled
+                            ? "bg-primary-600 opacity-100 scale-x-100"
+                            : "bg-white opacity-100 scale-x-100"
+                          : "bg-current opacity-0 scale-x-0 group-hover:opacity-50 group-hover:scale-x-100"
+                      )}
+                    />
                   </Link>
                 );
               })}
