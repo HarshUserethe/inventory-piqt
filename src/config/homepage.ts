@@ -10,7 +10,7 @@ export const heroContent = {
     "We are a 24/7 global call center empowering businesses with dedicated, accent-neutral customer support and business specialists. We fill operational gaps, helping business owners achieve seamless customer relations and scale efficiently.",
   primaryCta: { label: "Get In Touch", href: "/contact" },
   secondaryCta: { label: "Explore Our Services", href: "/services" },
-  trustedBy: ["Zendesk", "Twilio", "Five9", "Salesforce"],
+  trustedBy: ["Zendesk", "Twilio", "Five9", "Salesforce", "Logitech"],
 };
 
 export const stats = [
