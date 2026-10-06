@@ -51,15 +51,15 @@ export default function Navbar() {
             : "bg-transparent"
         )}
       >
-        <div className="container-custom">
-          <div className="flex items-center justify-between h-18 py-4">
+        <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
+          <div className="flex items-center justify-between h-16 py-3">
             {/* Logo */}
             <Link
               href="/"
               className="relative flex items-center group py-1"
               aria-label="Process IQ Tech Home"
             >
-              <div className="relative flex items-center h-8 sm:h-9 md:h-10">
+              <div className="relative flex items-center h-7 sm:h-8 md:h-[2.125rem]">
                 {/* Logo for y:0 (White text on dark/transparent background) */}
                 <Image
                   src="/logo-white.png"
@@ -68,7 +68,7 @@ export default function Navbar() {
                   height={166}
                   priority
                   className={cn(
-                    "h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity duration-300",
+                    "h-7 sm:h-8 md:h-[2.125rem] w-auto object-contain transition-opacity duration-300",
                     isScrolled ? "opacity-0 pointer-events-none" : "opacity-100"
                   )}
                 />
@@ -80,7 +80,7 @@ export default function Navbar() {
                   height={166}
                   priority
                   className={cn(
-                    "absolute inset-0 h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity duration-300",
+                    "absolute inset-0 h-7 sm:h-8 md:h-[2.125rem] w-auto object-contain transition-opacity duration-300",
                     isScrolled ? "opacity-100" : "opacity-0 pointer-events-none"
                   )}
                 />
@@ -97,7 +97,7 @@ export default function Navbar() {
                     <div key={link.label} className="relative group">
                       <button
                         className={cn(
-                          "relative flex items-center gap-1.5 px-3.5 py-2 text-[0.9rem] font-medium transition-colors duration-200",
+                          "relative flex items-center gap-1 px-3 py-1.5 text-[0.84rem] font-medium transition-colors duration-200",
                           isServicesActive
                             ? isScrolled
                               ? "text-primary-600 font-semibold"
@@ -114,7 +114,7 @@ export default function Navbar() {
                         <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
                         <span
                           className={cn(
-                            "absolute bottom-0 left-3.5 right-3.5 h-[2px] rounded-full transition-all duration-200 origin-center",
+                            "absolute bottom-0 left-3 right-3 h-[2px] rounded-full transition-all duration-200 origin-center",
                             isServicesActive
                               ? isScrolled
                                 ? "bg-primary-600 opacity-100 scale-x-100"
@@ -170,7 +170,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "relative px-3.5 py-2 text-[0.9rem] font-medium transition-colors duration-200 group",
+                      "relative px-3 py-1.5 text-[0.84rem] font-medium transition-colors duration-200 group",
                       isActive
                         ? isScrolled
                           ? "text-primary-600 font-semibold"
@@ -183,7 +183,7 @@ export default function Navbar() {
                     <span>{link.label}</span>
                     <span
                       className={cn(
-                        "absolute bottom-0 left-3.5 right-3.5 h-[2px] rounded-full transition-all duration-200 origin-center",
+                        "absolute bottom-0 left-3 right-3 h-[2px] rounded-full transition-all duration-200 origin-center",
                         isActive
                           ? isScrolled
                             ? "bg-primary-600 opacity-100 scale-x-100"
@@ -196,22 +196,11 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* CTA */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Link
-                href="tel:+18887429100"
-                className={cn(
-                  "text-[0.85rem] font-medium transition-colors",
-                  isScrolled
-                    ? "text-neutral-500 hover:text-neutral-800"
-                    : "text-neutral-300 hover:text-white"
-                )}
-              >
-                {siteConfig.phone}
-              </Link>
-              <Link href="/contact" className="btn-primary py-2.5 px-5 text-sm">
-                Get Started
-                <ArrowRight className="w-4 h-4" />
+            {/* Right Corner CTA */}
+            <div className="hidden lg:flex items-center">
+              <Link href="/contact" className="btn-primary py-2 px-4 text-xs sm:text-[0.825rem] font-semibold shadow-md hover:shadow-lg transition-all">
+                <span>Get Started</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
