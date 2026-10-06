@@ -43,19 +43,6 @@ const departmentColors: Record<string, string> = {
 export default function CareersPage() {
   const { hero, culture, benefits: showBenefits, openPositions, resumeUpload } = siteSections.careers;
 
-  // Determine Hero CTA behavior dynamically based on section config
-  const heroCtaHref = openPositions
-    ? "#open-roles"
-    : resumeUpload
-    ? "#resume-upload"
-    : "/contact";
-
-  const heroCtaText = openPositions
-    ? "See Open Roles"
-    : resumeUpload
-    ? "Upload Resume"
-    : "Contact Us";
-
   return (
     <>
       {/* Hero Section */}
@@ -70,39 +57,15 @@ export default function CareersPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
                   {careersHero.badge}
                 </div>
-                <h1 className="font-display text-[2.375rem] sm:text-[2.75rem] lg:text-[3.5rem] font-medium text-white mb-6 leading-tight">
+                <h1 className="font-display text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-extrabold text-white mb-6 leading-[1.1] sm:leading-[1.05] tracking-tight max-w-6xl">
                   {careersHero.headline}{" "}
-                  <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+                  <span className="animate-shiny-text font-extrabold inline-block drop-shadow-[0_0_25px_rgba(192,132,252,0.35)]">
                     {careersHero.headlineAccent}
                   </span>
                 </h1>
-                <p className="text-base sm:text-lg text-neutral-300 leading-relaxed mb-8">
+                <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal mb-2">
                   {careersHero.description}
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <a href={heroCtaHref} className="btn-primary">
-                    {heroCtaText} <ArrowRight className="w-4 h-4" />
-                  </a>
-                  <div className="flex items-center gap-2 text-neutral-300 text-sm">
-                    <div className="flex -space-x-2">
-                      {[
-                        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=60",
-                        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=60",
-                        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=60",
-                      ].map((src, i) => (
-                        <Image
-                          key={i}
-                          src={src}
-                          alt="Team member"
-                          width={32}
-                          height={32}
-                          className="w-8 h-8 rounded-full border-2 border-neutral-800 object-cover"
-                        />
-                      ))}
-                    </div>
-                    <span>Join 2,800+ experts</span>
-                  </div>
-                </div>
               </div>
               <div className="hidden lg:block">
                 <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
