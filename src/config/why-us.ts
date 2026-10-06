@@ -63,7 +63,6 @@ export const comparisonTable = {
     { capability: "Domain Expert Teams", piqt: true, si: "partial", boutique: true, bpo: false },
     { capability: "24/7 Global Support", piqt: true, si: true, boutique: false, bpo: true },
     { capability: "Process Intelligence & Mining", piqt: true, si: "partial", boutique: false, bpo: false },
-    { capability: "Rapid 90-Day Value Delivery", piqt: true, si: false, boutique: "partial", bpo: false },
     { capability: "Change Management Built-In", piqt: true, si: "partial", boutique: "partial", bpo: false },
     { capability: "ROI Guarantee", piqt: true, si: false, boutique: false, bpo: false },
   ],

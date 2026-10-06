@@ -2,14 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { heroContent } from "@/config/homepage";
-
-const highlights = [
-  "No long-term lock-ins",
-  "90-day results guarantee",
-  "24/7 global support",
-];
 
 export default function HeroSection() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -61,17 +55,8 @@ export default function HeroSection() {
 
         {/* Bottom Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-end pt-5 lg:pt-6 border-t border-white/10 animate-fade-in">
-          {/* Left Side: Key Highlights & Enterprise Badges */}
+          {/* Left Side: Enterprise Badges */}
           <div className="lg:col-span-6 space-y-4">
-            <div className="flex flex-wrap gap-x-5 gap-y-2.5 items-center">
-              {highlights.map((h) => (
-                <div key={h} className="flex items-center gap-2 text-xs sm:text-sm text-neutral-300">
-                  <CheckCircle2 className="w-4 h-4 text-accent-400 shrink-0" />
-                  <span>{h}</span>
-                </div>
-              ))}
-            </div>
-
             <div className="hidden sm:block pt-1">
               <p className="text-[10px] sm:text-[11px] font-semibold text-neutral-500 uppercase tracking-widest mb-2">
                 Trusted by enterprise leaders

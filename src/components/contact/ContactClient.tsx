@@ -57,18 +57,18 @@ export default function ContactClient() {
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-primary-950/60 to-neutral-950" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-primary-600/8 rounded-full blur-[120px]" />
         <div className="container-custom relative z-10">
-          <div className="max-w-5xl">
+          <div className="max-w-6xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-600/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
               Contact Us
             </div>
-            <h1 className="font-display text-[2.375rem] sm:text-[2.75rem] lg:text-[3.5rem] font-medium text-white mb-6 leading-tight">
+            <h1 className="font-display text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-extrabold text-white mb-6 leading-[1.1] sm:leading-[1.05] tracking-tight max-w-6xl">
               Let&apos;s Start Your{" "}
-              <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+              <span className="animate-shiny-text font-extrabold inline-block drop-shadow-[0_0_25px_rgba(192,132,252,0.35)]">
                 Transformation Journey
               </span>
             </h1>
-            <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
+            <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal max-w-4xl">
               Reach out to our team for a free process assessment, partnership inquiry, or just to learn more about how we can help your organization.
             </p>
           </div>
@@ -132,7 +132,7 @@ export default function ContactClient() {
               <RevealOnScroll delay={200}>
                 <div className="p-5 bg-white rounded-2xl border border-neutral-200">
                   <h4 className="font-display font-bold text-neutral-900 mb-4 text-sm uppercase tracking-wider">
-                    Our Offices
+                    Our Office
                   </h4>
                   <div className="space-y-3">
                     {siteConfig.offices.map((office) => (

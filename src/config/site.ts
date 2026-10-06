@@ -15,11 +15,10 @@ export const siteConfig = {
   supportEmail: "support@processiqtechconsulting.com",
   careersEmail: "careers@processiqtechconsulting.com",
   address: {
-    street: "1200 Innovation Drive, Suite 800",
-    city: "Austin",
-    state: "Texas",
-    zip: "78701",
-    country: "United States",
+    city: "Hyderabad",
+    country: "India",
+    type: "Headquarters",
+    fullAddress: "Hyderabad, India - Headquarters",
   },
   socialLinks: {
     linkedin: "https://linkedin.com/company/processiqtech",
@@ -29,32 +28,11 @@ export const siteConfig = {
   },
   offices: [
     {
-      city: "Austin",
-      country: "United States",
-      address: "1200 Innovation Drive, Suite 800",
-      phone: "+1 (888) 742-9100",
-      type: "Headquarters",
-    },
-    {
-      city: "London",
-      country: "United Kingdom",
-      address: "45 Finsbury Square, Level 3",
-      phone: "+44 20 7946 0800",
-      type: "European HQ",
-    },
-    {
-      city: "Singapore",
-      country: "Singapore",
-      address: "8 Marina View, Asia Square Tower 1",
-      phone: "+65 6877 4200",
-      type: "APAC HQ",
-    },
-    {
-      city: "Mumbai",
+      city: "Hyderabad",
       country: "India",
-      address: "BKC, G Block, Plot C-66, Bandra East",
-      phone: "+91 22 6900 7700",
-      type: "Delivery Center",
+      address: "Hyderabad, India",
+      phone: "+91 9515783300",
+      type: "Headquarters",
     },
   ],
 };
