@@ -4,25 +4,6 @@
 
 export const services = [
   {
-    id: "management-support",
-    icon: "Building",
-    title: "Management Support",
-    shortDescription:
-      "End-to-end management support from company setup to legal compliances.",
-    description:
-      "We offer end to end management support from company setup to legal compliances. We are closely working with the team of Chartered accountants and legal advisors to streamline the process. It helps you to stay focused on the core business operations where we ensure to meet compliances.",
-    features: [
-      "Company Setup",
-      "Legal Compliances",
-      "Chartered Accountants Coordination",
-      "Legal Advisory Integration",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
-    color: "indigo",
-    stats: { label: "Focus on core operations", value: "100%" },
-  },
-  {
     id: "operations-support",
     icon: "Users",
     title: "Operations Support",

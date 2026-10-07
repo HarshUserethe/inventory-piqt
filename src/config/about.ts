@@ -80,7 +80,7 @@ export const leadershipTeam = [
   {
     name: "David Okafor",
     title: "SVP, Global Delivery",
-    bio: "David leads our 2,800+ delivery professionals globally, maintaining the highest SLA performance standards across all client engagements.",
+    bio: "David leads our global delivery team, maintaining the highest SLA performance standards across all client engagements.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
     linkedin: "#",
   },

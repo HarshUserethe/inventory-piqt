@@ -86,7 +86,7 @@ export const siteSections: SiteSectionsConfig = {
     bpmAdvantages: true,
     process: true,
     technology: true,
-    industries: true,
+    industries: false,
     testimonials: true,
     whyUs: true,
     ctaBanner: true,
@@ -100,7 +100,7 @@ export const siteSections: SiteSectionsConfig = {
     mission: true,
     leadershipTeam: true,
     values: true,
-    stats: true,
+    stats: false,
   },
 
   // ------------------------------------------------------------
