@@ -52,6 +52,8 @@ export function AnimatedCounter({
   );
 }
 
+import { motion } from "framer-motion";
+
 interface RevealOnScrollProps {
   children: React.ReactNode;
   className?: string;
@@ -59,31 +61,15 @@ interface RevealOnScrollProps {
 }
 
 export function RevealOnScroll({ children, className = "", delay = 0 }: RevealOnScrollProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [delay]);
-
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-      } ${className}`}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: delay * 0.001 }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

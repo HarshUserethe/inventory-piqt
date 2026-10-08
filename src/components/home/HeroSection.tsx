@@ -6,6 +6,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { heroContent } from "@/config/homepage";
 
 import MoltenMetal from "@/components/ui/MoltenMetal";
+import { TextSplitReveal } from "@/components/ui/TextSplitReveal";
 
 export default function HeroSection() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -54,11 +55,11 @@ export default function HeroSection() {
 
         {/* Headline */}
         <h1
-          className="font-display font-extrabold text-white leading-[1.05] tracking-tight mb-6 animate-fade-in delay-100 max-w-7xl w-full mx-auto"
+          className="font-display font-extrabold text-white leading-[1.05] tracking-tight mb-6 max-w-7xl w-full mx-auto"
           style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.75rem)" }}
         >
-          {heroContent.headline}{" "}
-          <span className="animate-shiny-text inline">
+          <TextSplitReveal text={heroContent.headline} delay={100} />{" "}
+          <span className="animate-shiny-text inline" style={{ animationDelay: "1s" }}>
             {heroContent.headlineAccent}
           </span>
         </h1>
