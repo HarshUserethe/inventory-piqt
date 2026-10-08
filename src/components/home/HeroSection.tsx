@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { heroContent } from "@/config/homepage";
 
+import MoltenMetal from "@/components/ui/MoltenMetal";
+
 export default function HeroSection() {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -16,24 +18,25 @@ export default function HeroSection() {
     >
       {/* ── Background ── */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
-        {/* Crimson glow — center */}
-        <div
-          className="absolute rounded-full blur-[140px] pointer-events-none left-1/2 -translate-x-1/2"
-          style={{
-            top: "10%",
-            width: "800px",
-            height: "800px",
-            background: "radial-gradient(circle, rgba(225,29,46,0.15) 0%, transparent 70%)",
-          }}
+        <MoltenMetal
+          color1="#5227FF"
+          color2="#FF9FFC"
+          color3="#FFFFFF"
+          speed={0.35}
+          scale={4}
+          detail={3}
+          glow={1.6}
+          coreSize={0.1}
+          swirl={1}
+          fold={-0.2}
+          blackPoint={0.05}
+          brightness={1.3}
+          colorMode="molten"
+          grain
+          grainIntensity={0.05}
+          mouseInteraction
+          mouseStrength={0.3}
+          opacity={1}
         />
         {/* Subtle top gradient */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
