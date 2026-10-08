@@ -51,8 +51,6 @@ export const footerLinks = {
     { label: "About Us", href: "/about" },
     { label: "Leadership Team", href: "/about#team" },
     { label: "Careers", href: "/careers" },
-    { label: "Press & Media", href: "/about#press" },
-    { label: "Partners", href: "/about#partners" },
   ],
   services: [
     { label: "BPM Consulting", href: "/services#bpm-consulting" },
@@ -62,13 +60,7 @@ export const footerLinks = {
     { label: "Analytics & Insights", href: "/services#analytics" },
     { label: "Managed BPO Services", href: "/services#bpo" },
   ],
-  resources: [
-    { label: "Case Studies", href: "/resources/case-studies" },
-    { label: "White Papers", href: "/resources/white-papers" },
-    { label: "Blog", href: "/blog" },
-    { label: "FAQs", href: "/faqs" },
-    { label: "Documentation", href: "/docs" },
-  ],
+
   legal: [
     { label: "Privacy Policy", href: "/legal/privacy" },
     { label: "Terms of Service", href: "/legal/terms" },
