@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Linkedin, Twitter, Youtube, Facebook } from "@/components/ui/BrandIcons";
 import { siteConfig, footerLinks } from "@/config/site";
-import { certifications } from "@/config/homepage";
 
 const socialIcons = {
   linkedin: Linkedin,
@@ -20,7 +19,7 @@ export default function Footer() {
 
       {/* Main footer */}
       <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
 
           {/* Brand column */}
           <div className="lg:col-span-2">
@@ -35,26 +34,9 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-neutral-400 text-sm leading-relaxed mb-8 max-w-xs">
               We are a 24/7 global call center empowering businesses with dedicated, accent-neutral customer support and business specialists.
             </p>
-
-            {/* Certifications */}
-            <div className="mb-6">
-              <p className="text-[0.7rem] font-semibold text-neutral-500 uppercase tracking-widest mb-3">
-                Certifications &amp; Compliance
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {certifications.map((cert) => (
-                  <span
-                    key={cert}
-                    className="px-2.5 py-1 rounded-md bg-white/5 text-neutral-300 text-[0.7rem] font-medium border border-white/8"
-                  >
-                    {cert}
-                  </span>
-                ))}
-              </div>
-            </div>
 
             {/* Social links */}
             <div className="flex gap-2.5">
@@ -97,19 +79,6 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-white mb-5 tracking-wide">Services</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-neutral-400 hover:text-white transition-colors hover:translate-x-0.5 inline-block duration-150">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-white mb-5 tracking-wide">Resources</h3>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-neutral-400 hover:text-white transition-colors hover:translate-x-0.5 inline-block duration-150">
                     {link.label}
