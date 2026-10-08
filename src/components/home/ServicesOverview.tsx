@@ -81,7 +81,7 @@ export default function ServicesOverview() {
                   {/* Content - Top */}
                   <div className="relative z-10 p-8 transition-transform duration-500 group-hover:-translate-y-1">
                     <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/70 mb-3 block">
-                      {service.category || "Service"}
+                      Service
                     </span>
                     <h3 className="font-display font-extrabold text-white text-2xl md:text-3xl leading-tight max-w-[90%]">
                       {service.title}
