@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/AnimatedCounter";
-import Image from "next/image";
 
 const whyUsPoints = [
   {
@@ -28,7 +28,7 @@ const whyUsPoints = [
 
 export default function WhyUsSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-[var(--bg)]" aria-label="Why Choose Us">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Content */}
@@ -45,16 +45,16 @@ export default function WhyUsSection() {
 
             <div className="space-y-5">
               {whyUsPoints.map((point, index) => (
-                <RevealOnScroll key={point.title} delay={index * 100}>
+                <RevealOnScroll key={point.title} delay={index * 80}>
                   <div className="flex gap-4 items-start group">
-                    <div className="w-6 h-6 rounded-full bg-accent-100 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-accent-500 transition-colors duration-300">
-                      <CheckCircle2 className="w-4 h-4 text-accent-600 group-hover:text-white transition-colors duration-300" />
+                    <div className="w-7 h-7 rounded-full bg-brand-600/10 border border-brand-600/20 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-brand-600 group-hover:border-brand-600 transition-all duration-300">
+                      <CheckCircle2 className="w-4 h-4 text-brand-600 group-hover:text-white transition-colors duration-300" aria-hidden="true" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-base sm:text-lg text-neutral-900 mb-1">
+                      <h4 className="font-display font-bold text-[var(--text-primary)] text-base mb-1">
                         {point.title}
                       </h4>
-                      <p className="text-base text-neutral-600 leading-relaxed">
+                      <p className="text-[var(--text-secondary)] text-[0.9375rem] leading-relaxed">
                         {point.description}
                       </p>
                     </div>
@@ -64,29 +64,30 @@ export default function WhyUsSection() {
             </div>
           </div>
 
-          {/* Right: Image */}
+          {/* Right: Image with floating stats */}
           <RevealOnScroll delay={200}>
             <div className="relative">
-              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl">
+              <div className="relative rounded-[28px] overflow-hidden aspect-[4/5] shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85"
-                  alt="Team collaboration and strategy"
+                  alt="Team collaboration and strategy session"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-950/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               </div>
 
-              {/* Floating stats */}
-              <div className="absolute top-6 -left-6 bg-white rounded-2xl p-5 shadow-card-hover border border-neutral-100">
-                <div className="text-2xl font-display font-bold text-primary-600 mb-0.5">98.5%</div>
-                <div className="text-xs text-neutral-500">Client Satisfaction Rate</div>
+              {/* Floating stat — top left */}
+              <div className="absolute -top-4 -left-6 card px-5 py-4 shadow-brand-lg border border-brand-600/20 bg-[var(--surface)]">
+                <div className="text-2xl font-display font-extrabold gradient-text mb-0.5">98.5%</div>
+                <div className="text-[0.75rem] text-[var(--text-muted)] font-medium">Client Satisfaction Rate</div>
               </div>
 
-              <div className="absolute bottom-6 -right-6 bg-white rounded-2xl p-5 shadow-card-hover border border-neutral-100">
-                <div className="text-2xl font-display font-bold text-accent-600 mb-0.5">$2.4B+</div>
-                <div className="text-xs text-neutral-500">Savings Delivered</div>
+              {/* Floating stat — bottom right */}
+              <div className="absolute -bottom-4 -right-6 card px-5 py-4 shadow-lg border border-emerald-500/20 bg-[var(--surface)]">
+                <div className="text-2xl font-display font-extrabold text-emerald-500 mb-0.5">$2.4B+</div>
+                <div className="text-[0.75rem] text-[var(--text-muted)] font-medium">Savings Delivered</div>
               </div>
             </div>
           </RevealOnScroll>

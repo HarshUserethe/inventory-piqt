@@ -1,67 +1,65 @@
-import { Zap, Shield, TrendingUp, Globe, Clock, Briefcase, Cpu } from "lucide-react";
+import { Clock, Briefcase, Cpu, Zap } from "lucide-react";
 import { valuePropositions } from "@/config/homepage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/AnimatedCounter";
 
-const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
-  Zap,
-  Shield,
-  TrendingUp,
-  Globe,
-  Clock,
-  Briefcase,
-  Cpu,
+const iconMap: Record<string, React.ElementType> = {
+  Clock, Briefcase, Cpu, Zap,
 };
 
-const colorMap: Record<string, string> = {
-  Zap: "from-amber-500 to-orange-500",
-  Shield: "from-emerald-500 to-teal-500",
-  TrendingUp: "from-primary-500 to-violet-500",
-  Globe: "from-blue-500 to-cyan-500",
-  Clock: "from-sky-500 to-blue-500",
-  Briefcase: "from-violet-500 to-purple-500",
-  Cpu: "from-teal-500 to-emerald-500",
-};
+const gradients = [
+  "from-brand-600/10 to-brand-600/5",
+  "from-indigo-500/10 to-indigo-500/5",
+  "from-emerald-500/10 to-emerald-500/5",
+  "from-coral-500/10 to-coral-500/5",
+];
 
-const bgMap: Record<string, string> = {
-  Zap: "bg-amber-50",
-  Shield: "bg-emerald-50",
-  TrendingUp: "bg-primary-50",
-  Globe: "bg-blue-50",
-  Clock: "bg-sky-50",
-  Briefcase: "bg-violet-50",
-  Cpu: "bg-teal-50",
-};
+const iconColors = [
+  "text-brand-600 dark:text-brand-400",
+  "text-indigo-500",
+  "text-emerald-500",
+  "text-brand-600 dark:text-brand-400",
+];
+
+const borderColors = [
+  "hover:border-brand-600/30",
+  "hover:border-indigo-500/30",
+  "hover:border-emerald-500/30",
+  "hover:border-coral-500/30",
+];
 
 export default function ValuePropositionSection() {
   return (
-    <section className="section-padding bg-white border-b border-neutral-100">
+    <section className="section-padding bg-[var(--bg)]" aria-label="Why Process IQ Tech">
       <div className="container-custom">
         <RevealOnScroll>
           <SectionHeading
             badge="Why Process IQ Tech"
-            title="Built for Enterprise Excellence,"
-            accent="Delivered with Speed"
-            description="We combine deep BPM expertise, proprietary technology, and outcome-driven delivery to create transformations that last."
+            title="Built for Business"
+            accent="Performance"
+            description="Four core strengths that make Process IQ Tech the partner of choice for global enterprises."
             centered
+            className="mb-14"
           />
         </RevealOnScroll>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {valuePropositions.map((vp, index) => {
-            const Icon = iconMap[vp.icon];
+            const Icon = iconMap[vp.icon] ?? Zap;
             return (
-              <RevealOnScroll key={vp.title} delay={index * 100} className="h-full">
-                <div className="card-premium group h-full flex flex-col justify-start">
-                  <div className={`w-12 h-12 rounded-xl ${bgMap[vp.icon]} flex items-center justify-center mb-5`}>
-                    <div className={`bg-gradient-to-br ${colorMap[vp.icon]} rounded-lg p-2.5`}>
-                      {Icon && <Icon className="w-5 h-5 text-white" strokeWidth={2} />}
-                    </div>
+              <RevealOnScroll key={vp.title} delay={index * 80} className="h-full">
+                <div
+                  className={`card h-full flex flex-col group ${borderColors[index]} bg-gradient-to-br ${gradients[index]} dark:bg-none`}
+                >
+                  {/* Icon */}
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradients[index]} border border-white/10 dark:border-white/5 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className={`w-6 h-6 ${iconColors[index]}`} aria-hidden="true" />
                   </div>
-                  <h3 className="text-xl font-display font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
+
+                  <h3 className="font-display font-bold text-[var(--text-primary)] mb-3">
                     {vp.title}
                   </h3>
-                  <p className="text-base text-neutral-600 leading-relaxed flex-1">
+                  <p className="text-[var(--text-secondary)] text-[0.9375rem] leading-relaxed flex-1">
                     {vp.description}
                   </p>
                 </div>
