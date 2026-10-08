@@ -44,7 +44,6 @@ export interface ServicesSectionsConfig {
 export interface WhyUsSectionsConfig {
   hero: boolean;
   differentiators: boolean;
-  comparisons: boolean;
   ctaBanner: boolean;
 }
 
@@ -70,7 +69,7 @@ export const siteSections: SiteSectionsConfig = {
   careers: {
     hero: true,
     culture: true,
-    benefits: true,
+    benefits: false,
     openPositions: false, // Set to false to hide open positions section
     resumeUpload: true,  // Set to false to hide resume upload section
   },
@@ -100,7 +99,7 @@ export const siteSections: SiteSectionsConfig = {
     mission: true,
     leadershipTeam: true,
     values: true,
-    stats: false,
+    stats: true,
   },
 
   // ------------------------------------------------------------
@@ -119,7 +118,6 @@ export const siteSections: SiteSectionsConfig = {
   whyUs: {
     hero: true,
     differentiators: true,
-    comparisons: true,
     ctaBanner: true,
   },
 

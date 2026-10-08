@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 
 const cultureIcons: Record<string, string> = {
   GraduationCap: "🎓",
-  Globe: "🌍",
-  Heart: "❤️",
+  Building: "🏢",
+  Zap: "⚡",
   TrendingUp: "📈",
-  Users: "👥",
+  Smile: "😊",
   Clock: "⏰",
 };
 
@@ -97,15 +97,17 @@ export default function CareersPage() {
                 centered
               />
             </RevealOnScroll>
-            <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
               {culturePoints.map((point, index) => (
-                <RevealOnScroll key={point.title} delay={index * 80}>
-                  <div className="card-premium group">
-                    <div className="text-3xl mb-4">{cultureIcons[point.icon] || "🌟"}</div>
-                    <h3 className="font-display font-bold text-lg text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
-                      {point.title}
-                    </h3>
-                    <p className="text-sm text-neutral-500 leading-relaxed">{point.description}</p>
+                <RevealOnScroll key={point.title} delay={index * 80} className="h-full">
+                  <div className="card-premium group h-full flex flex-col justify-between">
+                    <div>
+                      <div className="text-3xl mb-4">{cultureIcons[point.icon] || "🌟"}</div>
+                      <h3 className="font-display font-bold text-lg text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
+                        {point.title}
+                      </h3>
+                      <p className="text-sm text-neutral-500 leading-relaxed">{point.description}</p>
+                    </div>
                   </div>
                 </RevealOnScroll>
               ))}
