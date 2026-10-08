@@ -1,39 +1,36 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 const gilroy = localFont({
   src: [
-    {
-      path: "../fonts/Gilroy-Regular.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Gilroy-Medium.woff",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Gilroy-SemiBold.woff",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Gilroy-Bold.woff",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Gilroy-ExtraBold.woff",
-      weight: "800",
-      style: "normal",
-    },
+    { path: "../fonts/Gilroy-Regular.woff",   weight: "400", style: "normal" },
+    { path: "../fonts/Gilroy-Medium.woff",    weight: "500", style: "normal" },
+    { path: "../fonts/Gilroy-SemiBold.woff",  weight: "600", style: "normal" },
+    { path: "../fonts/Gilroy-Bold.woff",      weight: "700", style: "normal" },
+    { path: "../fonts/Gilroy-ExtraBold.woff", weight: "800", style: "normal" },
   ],
   variable: "--font-gilroy",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -53,13 +50,16 @@ export const metadata: Metadata = {
     "BPO Services",
     "Workflow Optimization",
     "Process Intelligence",
+    "Call Center",
+    "Customer Support",
   ],
   authors: [{ name: "Process IQ Tech" }],
   creator: "Process IQ Tech",
+  metadataBase: new URL("https://www.processiqtechconsulting.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.processiqtech.com",
+    url: "https://www.processiqtechconsulting.com",
     siteName: "Process IQ Tech",
     title: "Process IQ Tech | Intelligent Business Process Management",
     description:
@@ -83,13 +83,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${gilroy.variable} font-sans`}>
-      <body className="antialiased font-sans">
-        <SmoothScroll>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScroll>
+    <html
+      lang="en"
+      className={`${gilroy.variable} ${sora.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="antialiased font-sans" suppressHydrationWarning>
+        <ThemeProvider>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <ScrollProgress />
+          <SmoothScroll>
+            <Navbar />
+            <main id="main-content">{children}</main>
+            <Footer />
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );
