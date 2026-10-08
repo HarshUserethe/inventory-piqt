@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Linkedin } from "@/components/ui/BrandIcons";
-import { aboutHero, companyMilestones, leadershipTeam, companyValues, awards } from "@/config/about";
+import { aboutHero, leadershipTeam, companyValues } from "@/config/about";
 import { siteSections } from "@/config/sections";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/AnimatedCounter";
@@ -11,7 +11,7 @@ import { RevealOnScroll } from "@/components/ui/AnimatedCounter";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Process IQ Tech's mission, history, and the global team transforming business processes for 500+ enterprises worldwide.",
+    "Learn about Process IQ Tech's mission, values, and executive team transforming business processes for organizations worldwide.",
 };
 
 const valueIcons: Record<string, string> = {
@@ -23,12 +23,6 @@ const valueIcons: Record<string, string> = {
   Shield: "🛡️",
 };
 
-const awardIcons: Record<string, string> = {
-  Award: "🏆",
-  Trophy: "🥇",
-  Star: "⭐",
-  Users: "👥",
-};
 
 export default function AboutPage() {
   const { hero, mission, leadershipTeam: showTeam, values } = siteSections.about;
@@ -85,22 +79,9 @@ export default function AboutPage() {
                   description="We believe every organization has untapped potential locked in inefficient processes. Our mission is to unlock it — using the best of human expertise and technological innovation."
                   className="mb-8"
                 />
-                <p className="text-neutral-500 leading-relaxed mb-6">
-                  Since 2009, we have partnered with some of the world's most ambitious companies — from high-growth scale-ups to Global 2000 enterprises — to redesign the way they work. What drives us is simple: when processes work better, businesses grow faster, employees work smarter, and customers are served better.
+                <p className="text-neutral-500 leading-relaxed">
+                  We partner with ambitious companies — from high-growth scale-ups to established enterprises — to redesign the way they work. What drives us is simple: when processes work better, businesses grow faster, employees work smarter, and customers are served better.
                 </p>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { label: "Founded", value: "2009" },
-                    { label: "Employees", value: "2,800+" },
-                    { label: "Clients", value: "500+" },
-                    { label: "Countries", value: "40+" },
-                  ].map((item) => (
-                    <div key={item.label} className="p-4 rounded-xl bg-neutral-50 border border-neutral-100">
-                      <div className="text-2xl font-display font-bold text-primary-600 mb-1">{item.value}</div>
-                      <div className="text-sm text-neutral-500">{item.label}</div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </RevealOnScroll>
           </div>
@@ -135,39 +116,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <RevealOnScroll>
-            <SectionHeading
-              badge="Our Journey"
-              title="15 Years of"
-              accent="Continuous Growth"
-              centered
-            />
-          </RevealOnScroll>
-          <div className="mt-14 max-w-3xl mx-auto">
-            <div className="relative">
-              <div className="absolute left-[2.2rem] top-0 bottom-0 w-px bg-neutral-200" />
-              <div className="space-y-8">
-                {companyMilestones.map((milestone, index) => (
-                  <RevealOnScroll key={milestone.year} delay={index * 80}>
-                    <div className="flex gap-6 relative">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-600 to-primary-800 flex flex-col items-center justify-center text-white shrink-0 shadow-primary z-10">
-                        <span className="text-xs font-bold leading-tight">{milestone.year}</span>
-                      </div>
-                      <div className="bg-white border border-neutral-100 rounded-2xl p-5 flex-1 shadow-card hover:shadow-card-hover hover:border-primary-100 transition-all duration-300">
-                        <h4 className="font-display font-bold text-neutral-900 mb-2">{milestone.title}</h4>
-                        <p className="text-sm text-neutral-500 leading-relaxed">{milestone.description}</p>
-                      </div>
-                    </div>
-                  </RevealOnScroll>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Leadership Team */}
       <section id="team" className="section-padding bg-neutral-50">
@@ -214,33 +162,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Awards */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <RevealOnScroll>
-            <SectionHeading
-              badge="Recognition"
-              title="Industry Awards &"
-              accent="Accolades"
-              centered
-            />
-          </RevealOnScroll>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {awards.map((award, index) => (
-              <RevealOnScroll key={award.title} delay={index * 80}>
-                <div className="text-center p-8 rounded-2xl border border-neutral-200 hover:border-primary-200 hover:bg-primary-50/30 transition-all duration-300 group">
-                  <div className="text-4xl mb-4">{awardIcons[award.icon] || "🏆"}</div>
-                  <div className="text-xs font-semibold text-primary-500 uppercase tracking-wider mb-2">{award.year}</div>
-                  <h4 className="font-display font-bold text-neutral-900 text-base mb-2 group-hover:text-primary-700 transition-colors">
-                    {award.title}
-                  </h4>
-                  <p className="text-xs text-neutral-400">{award.category}</p>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary-700 to-primary-800">

@@ -37,14 +37,6 @@ export const differentiators = [
   },
   {
     number: "04",
-    icon: "DollarSign",
-    title: "Transparent Pricing",
-    description:
-      "Our business process management starts at USD 1800 per month per employee (9 hours a day, 5 days a week). This pricing includes all expenses, payroll, taxes and all related costs.",
-    highlight: "All-inclusive $1800/mo pricing",
-  },
-  {
-    number: "05",
     icon: "CheckCircle",
     title: "Clear Terms",
     description:
@@ -53,51 +45,10 @@ export const differentiators = [
   },
 ];
 
-export const comparisonTable = {
-  headers: ["Capability", "Process IQ Tech", "Traditional SI", "Boutique Consultant", "Offshore BPO"],
-  rows: [
-    { capability: "End-to-End BPM Services", piqt: true, si: true, boutique: false, bpo: false },
-    { capability: "Proprietary Automation Platform", piqt: true, si: false, boutique: false, bpo: false },
-    { capability: "AI/ML Cognitive Automation", piqt: true, si: "partial", boutique: false, bpo: false },
-    { capability: "Outcome-Based Pricing", piqt: true, si: false, boutique: "partial", bpo: false },
-    { capability: "Domain Expert Teams", piqt: true, si: "partial", boutique: true, bpo: false },
-    { capability: "24/7 Global Support", piqt: true, si: true, boutique: false, bpo: true },
-    { capability: "Process Intelligence & Mining", piqt: true, si: "partial", boutique: false, bpo: false },
-    { capability: "Change Management Built-In", piqt: true, si: "partial", boutique: "partial", bpo: false },
-    { capability: "ROI Guarantee", piqt: true, si: false, boutique: false, bpo: false },
-  ],
-};
 
-export const clientSuccessStories = [
-  {
-    company: "Nexora Financial Group",
-    industry: "Financial Services",
-    challenge: "Manual, paper-heavy accounts payable process causing 14-day invoice cycles and frequent compliance violations.",
-    solution: "Deployed intelligent document processing + RPA for end-to-end AP automation integrated with SAP S/4HANA.",
-    results: [
-      { metric: "Invoice cycle time", before: "14 days", after: "1.8 days" },
-      { metric: "Processing cost per invoice", before: "$18.40", after: "$3.20" },
-      { metric: "Straight-through processing", before: "22%", after: "91%" },
-      { metric: "Compliance score", before: "67%", after: "100%" },
-    ],
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-  },
-  {
-    company: "GlobalTech Manufacturing",
-    industry: "Manufacturing",
-    challenge: "Fragmented supply chain workflows across 12 ERP systems causing $47M in annual inventory overruns.",
-    solution: "Unified process layer with real-time visibility dashboard and predictive demand planning automation.",
-    results: [
-      { metric: "Inventory carrying cost", before: "$47M excess", after: "$9M excess" },
-      { metric: "Order accuracy", before: "84%", after: "99.1%" },
-      { metric: "Supplier lead time", before: "22 days", after: "11 days" },
-      { metric: "Annual savings", before: "-", after: "$38M" },
-    ],
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-  },
-];
+
+
 
 export const partnerBrands = [
-  "UiPath", "Automation Anywhere", "Microsoft", "SAP", "Salesforce",
-  "ServiceNow", "AWS", "Google Cloud", "Oracle", "IBM", "Blue Prism", "Pegasystems",
+  "Zendesk", "Zoho", "Salesforce", "Twilio", "Five9", "Logitech",
 ];

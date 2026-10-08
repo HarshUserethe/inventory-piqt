@@ -5,7 +5,6 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { services } from "@/config/services";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/AnimatedCounter";
-import { industries } from "@/config/homepage";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -13,10 +12,6 @@ export const metadata: Metadata = {
     "Explore Process IQ Tech's comprehensive BPM services: consulting, automation, workflow optimization, IDP, analytics, and managed BPO.",
 };
 
-const industryIcons: Record<string, string> = {
-  Building2: "🏦", Heart: "🏥", Factory: "🏭", ShoppingBag: "🛍️",
-  Truck: "🚚", Wifi: "📡", Zap: "⚡", Landmark: "🏛️",
-};
 
 export default function ServicesPage() {
   return (
@@ -115,32 +110,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Industries */}
-      <section className="section-padding bg-neutral-50">
-        <div className="container-custom">
-          <RevealOnScroll>
-            <SectionHeading
-              badge="Industries"
-              title="Specialized Expertise for"
-              accent="Every Sector"
-              centered
-            />
-          </RevealOnScroll>
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {industries.map((industry, i) => (
-              <RevealOnScroll key={industry.name} delay={i * 50}>
-                <div className="text-center p-5 rounded-xl bg-white border border-neutral-200 hover:border-primary-200 hover:bg-primary-50/20 transition-all group">
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
-                    {industryIcons[industry.icon]}
-                  </div>
-                  <div className="text-sm font-semibold text-neutral-700 group-hover:text-primary-600 transition-colors">{industry.name}</div>
-                  <div className="text-xs text-neutral-400 mt-1">{industry.clients} clients</div>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary-700 to-primary-800">
