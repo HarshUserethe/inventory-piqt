@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, X, Minus } from "lucide-react";
-import { whyUsHero, differentiators, comparisonTable, clientSuccessStories, partnerBrands } from "@/config/why-us";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { whyUsHero, differentiators, partnerBrands } from "@/config/why-us";
 import { siteSections } from "@/config/sections";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/AnimatedCounter";
@@ -23,7 +22,7 @@ const differentiatorIcons: Record<string, string> = {
 };
 
 export default function WhyUsPage() {
-  const { hero, differentiators: showDifferentiators, comparisons, ctaBanner } = siteSections.whyUs;
+  const { hero, differentiators: showDifferentiators } = siteSections.whyUs;
 
   return (
     <>
@@ -59,7 +58,7 @@ export default function WhyUsPage() {
             <RevealOnScroll>
               <SectionHeading
                 badge="What Sets Us Apart"
-                title={`${differentiators.length} Reasons Why 500+`}
+                title={`Reasons Why`}
                 accent="Enterprises Choose Us"
                 centered
               />
@@ -97,148 +96,9 @@ export default function WhyUsPage() {
         </section>
       )}
 
-      {/* Comparison Table */}
-      <section className="section-padding bg-neutral-50">
-        <div className="container-custom">
-          <RevealOnScroll>
-            <SectionHeading
-              badge="Competitive Comparison"
-              title="How We Compare to the"
-              accent="Alternatives"
-              description="A transparent look at what makes Process IQ Tech the smarter choice over traditional alternatives."
-              centered
-            />
-          </RevealOnScroll>
-          <RevealOnScroll delay={100}>
-            <div className="mt-14 overflow-x-auto">
-              <table className="w-full min-w-[700px] border-collapse">
-                <thead>
-                  <tr>
-                    <th className="text-left py-4 px-5 text-sm font-semibold text-neutral-500 bg-white border-b border-neutral-200 rounded-tl-2xl w-[35%]">
-                      Capability
-                    </th>
-                    {[
-                      { label: "Process IQ Tech", highlight: true },
-                      { label: "Traditional SI", highlight: false },
-                      { label: "Boutique Consultant", highlight: false },
-                      { label: "Offshore BPO", highlight: false },
-                    ].map((col) => (
-                      <th
-                        key={col.label}
-                        className={`text-center py-4 px-4 text-sm font-semibold border-b border-neutral-200 ${
-                          col.highlight
-                            ? "bg-primary-600 text-white"
-                            : "bg-white text-neutral-600"
-                        } ${col.label === "Process IQ Tech" ? "rounded-tr-none" : ""}`}
-                      >
-                        {col.label}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonTable.rows.map((row, rowIndex) => (
-                    <tr
-                      key={row.capability}
-                      className={rowIndex % 2 === 0 ? "bg-white" : "bg-neutral-50/50"}
-                    >
-                      <td className="py-4 px-5 text-sm font-medium text-neutral-700 border-b border-neutral-100">
-                        {row.capability}
-                      </td>
-                      {[row.piqt, row.si, row.boutique, row.bpo].map((val, colIndex) => (
-                        <td
-                          key={colIndex}
-                          className={`text-center py-4 px-4 border-b border-neutral-100 ${
-                            colIndex === 0 ? "bg-primary-50/50" : ""
-                          }`}
-                        >
-                          {val === true ? (
-                            <CheckCircle2 className={`w-5 h-5 mx-auto ${colIndex === 0 ? "text-primary-600" : "text-accent-500"}`} />
-                          ) : val === false ? (
-                            <X className="w-4 h-4 mx-auto text-neutral-300" />
-                          ) : (
-                            <Minus className="w-4 h-4 mx-auto text-amber-400" />
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <p className="text-xs text-neutral-400 mt-3 pl-2">
-                <Minus className="w-3 h-3 inline mr-1 text-amber-400" /> = Partial capability
-              </p>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
 
-      {/* Client Success Stories */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <RevealOnScroll>
-            <SectionHeading
-              badge="Case Studies"
-              title="Real Results,"
-              accent="Real Clients"
-              description="Numbers don't lie. Here's what we delivered for some of our most complex engagements."
-              centered
-            />
-          </RevealOnScroll>
-          <div className="mt-14 space-y-12">
-            {clientSuccessStories.map((story, index) => {
-              const isEven = index % 2 === 0;
-              return (
-                <RevealOnScroll key={story.company} delay={index * 100}>
-                  <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${!isEven ? "lg:grid-flow-col" : ""}`}>
-                    <div className={`relative rounded-3xl overflow-hidden aspect-video shadow-xl ${!isEven ? "lg:order-2" : ""}`}>
-                      <Image
-                        src={story.image}
-                        alt={story.company}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/50 to-transparent" />
-                      <div className="absolute bottom-6 left-6">
-                        <span className="px-3 py-1.5 rounded-full bg-white/90 text-xs font-bold text-primary-700">
-                          {story.industry}
-                        </span>
-                      </div>
-                    </div>
-                    <div className={!isEven ? "lg:order-1" : ""}>
-                      <h3 className="font-display font-bold text-2xl text-neutral-900 mb-2">{story.company}</h3>
-                      <div className="mb-4">
-                        <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Challenge</span>
-                        <p className="text-neutral-600 text-sm leading-relaxed mt-1">{story.challenge}</p>
-                      </div>
-                      <div className="mb-6">
-                        <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Solution</span>
-                        <p className="text-neutral-600 text-sm leading-relaxed mt-1">{story.solution}</p>
-                      </div>
-                      <div>
-                        <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Results</span>
-                        <div className="mt-3 grid grid-cols-2 gap-3">
-                          {story.results.map((result) => (
-                            <div key={result.metric} className="p-3 rounded-xl bg-primary-50 border border-primary-100">
-                              <div className="text-xs text-neutral-500 mb-1">{result.metric}</div>
-                              <div className="flex items-center gap-1 text-sm">
-                                <span className="text-neutral-400 line-through">{result.before}</span>
-                                <ArrowRight className="w-3 h-3 text-accent-500" />
-                                <span className="font-bold text-primary-600">{result.after}</span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </RevealOnScroll>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* Partner Logos */}
       <section className="section-padding bg-neutral-50">
