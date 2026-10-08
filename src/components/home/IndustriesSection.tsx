@@ -1,51 +1,41 @@
+// IndustriesSection — currently hidden per sections config
+import { Building2, Heart, Factory, ShoppingBag, Truck, Wifi, Zap, Landmark } from "lucide-react";
 import { industries } from "@/config/homepage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/AnimatedCounter";
 
-const industryIcons: Record<string, string> = {
-  Building2: "🏦",
-  Heart: "🏥",
-  Factory: "🏭",
-  ShoppingBag: "🛍️",
-  Truck: "🚚",
-  Wifi: "📡",
-  Zap: "⚡",
-  Landmark: "🏛️",
+const iconMap: Record<string, React.ElementType> = {
+  Building2, Heart, Factory, ShoppingBag, Truck, Wifi, Zap, Landmark,
 };
 
 export default function IndustriesSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-[var(--bg)]" aria-label="Industries We Serve">
       <div className="container-custom">
         <RevealOnScroll>
           <SectionHeading
-            badge="Industries We Serve"
-            title="Deep Expertise Across"
-            accent="Every Sector"
-            description="Our domain specialists have spent careers inside your industry, understanding its unique challenges and compliance requirements."
+            badge="Industries"
+            title="Serving Leaders"
+            accent="Across Sectors"
             centered
+            className="mb-14"
           />
         </RevealOnScroll>
-
-        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {industries.map((industry, index) => (
-            <RevealOnScroll key={industry.name} delay={index * 60}>
-              <div className="group relative flex flex-col items-center justify-center p-6 rounded-2xl border border-neutral-200 bg-white hover:border-primary-200 hover:bg-primary-50/30 transition-all duration-300 cursor-default">
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {industryIcons[industry.icon] || "🏢"}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+          {industries.map((industry, index) => {
+            const Icon = iconMap[industry.icon] ?? Building2;
+            return (
+              <RevealOnScroll key={industry.name} delay={index * 60} className="h-full">
+                <div className="card text-center h-full flex flex-col items-center group">
+                  <div className="w-12 h-12 rounded-xl bg-brand-600/8 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <Icon className="w-6 h-6 text-brand-600 dark:text-brand-400" aria-hidden="true" />
+                  </div>
+                  <p className="text-[var(--text-primary)] font-semibold text-sm mb-1">{industry.name}</p>
+                  <p className="text-brand-600 dark:text-brand-400 text-xs font-bold">{industry.clients}</p>
                 </div>
-                <h4 className="font-display font-semibold text-neutral-800 text-sm text-center mb-1.5 group-hover:text-primary-700 transition-colors">
-                  {industry.name}
-                </h4>
-                <span className="text-xs text-neutral-400 font-medium">
-                  {industry.clients} clients
-                </span>
-
-                {/* Hover indicator */}
-                <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-b-2xl scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </div>
-            </RevealOnScroll>
-          ))}
+              </RevealOnScroll>
+            );
+          })}
         </div>
       </div>
     </section>

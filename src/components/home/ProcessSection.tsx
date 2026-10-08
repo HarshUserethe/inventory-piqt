@@ -1,74 +1,80 @@
+import { Building2, MapPin, Users, BookOpen, CheckCircle } from "lucide-react";
 import { processSteps } from "@/config/homepage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/AnimatedCounter";
 
-const stepIcons: Record<string, string> = {
-  // Legacy
-  Search: "🔍",
-  PenTool: "✏️",
-  Settings: "⚙️",
-  Rocket: "🚀",
-  // Current 5-step icons
-  Building: "🏢",
-  MapPin: "📍",
-  Users: "🤝",
-  BookOpen: "📖",
-  CheckCircle: "✅",
+const iconMap: Record<string, React.ElementType> = {
+  Building: Building2,
+  MapPin,
+  Users,
+  BookOpen,
+  CheckCircle,
 };
 
 export default function ProcessSection() {
   return (
-    <section className="section-padding bg-neutral-950 relative overflow-hidden">
-      {/* BG decor */}
-      <div className="absolute inset-0 opacity-[0.04]">
-        <div
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-          className="absolute inset-0"
-        />
-      </div>
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary-600/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-600/10 rounded-full blur-[100px]" />
-
-      <div className="container-custom relative z-10">
+    <section className="section-padding bg-[var(--bg)]" aria-label="How We Work">
+      <div className="container-custom">
         <RevealOnScroll>
           <SectionHeading
             badge="How We Work"
-            title="Our Proven"
-            accent="Transformation Process"
-            description="A structured, time-tested methodology that delivers results with precision and consistency — every time."
+            title="5 Steps to"
+            accent="Seamless Operations"
+            description="A proven, structured approach from company setup to live service delivery."
             centered
-            light
+            className="mb-16"
           />
         </RevealOnScroll>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative">
-          {/* Connection line (desktop only) */}
-          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-px bg-gradient-to-r from-primary-700 via-primary-500 to-accent-600" />
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line (desktop) */}
+          <div className="hidden lg:block absolute left-[calc(50%-1px)] top-8 bottom-8 w-0.5 bg-gradient-to-b from-brand-600/30 via-brand-600/60 to-brand-600/30" aria-hidden="true" />
 
-          {processSteps.map((step, index) => (
-            <RevealOnScroll key={step.step} delay={index * 120}>
-              <div className="relative flex flex-col items-center text-center">
-                {/* Step circle */}
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary-600 to-primary-800 border-4 border-primary-500/30 flex flex-col items-center justify-center mb-6 shadow-primary relative z-10 group-hover:scale-105 transition-transform">
-                  <span className="text-3xl mb-0.5">{stepIcons[step.icon] || "✨"}</span>
-                  <span className="text-xs font-bold text-primary-200 tracking-wider">
-                    STEP {step.step}
-                  </span>
-                </div>
+          <div className="space-y-8 lg:space-y-0">
+            {processSteps.map((step, index) => {
+              const Icon = iconMap[step.icon] ?? CheckCircle;
+              const isLeft = index % 2 === 0;
 
-                <h3 className="font-display font-bold text-white text-xl mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-base text-neutral-300 leading-relaxed max-w-xs">
-                  {step.description}
-                </p>
-              </div>
-            </RevealOnScroll>
-          ))}
+              return (
+                <RevealOnScroll key={step.step} delay={index * 100}>
+                  <div className={`lg:grid lg:grid-cols-2 lg:gap-12 items-center ${index > 0 ? "lg:-mt-4" : ""}`}>
+                    {/* Card */}
+                    <div className={`${isLeft ? "lg:order-1" : "lg:order-2"}`}>
+                      <div className="card group hover:border-brand-600/40 flex flex-col sm:flex-row gap-4 items-start">
+                        {/* Step number + icon */}
+                        <div className="shrink-0">
+                          <div className="w-14 h-14 rounded-xl bg-brand-gradient flex items-center justify-center shadow-brand group-hover:scale-105 transition-transform duration-300">
+                            <Icon className="w-7 h-7 text-white" aria-hidden="true" />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <span className="text-[0.7rem] font-bold text-brand-600 dark:text-brand-400 tracking-widest uppercase">
+                              Step {step.step}
+                            </span>
+                          </div>
+                          <h3 className="font-display font-bold text-[var(--text-primary)] mb-2 text-xl">
+                            {step.title}
+                          </h3>
+                          <p className="text-[var(--text-secondary)] text-[0.9375rem] leading-relaxed">
+                            {step.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Center number (desktop only) */}
+                    <div className={`hidden lg:flex ${isLeft ? "lg:order-2 justify-start" : "lg:order-1 justify-end"} items-center`}>
+                      <div className="relative z-10 w-12 h-12 rounded-full bg-brand-gradient flex items-center justify-center shadow-brand text-white font-bold text-base border-4 border-[var(--bg)]">
+                        {step.step}
+                      </div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

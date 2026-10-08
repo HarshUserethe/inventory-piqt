@@ -1,19 +1,5 @@
 import { cn } from "@/lib/utils";
 
-interface SectionBadgeProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-export function SectionBadge({ children, className }: SectionBadgeProps) {
-  return (
-    <span className={cn("section-badge", className)}>
-      <span className="w-1.5 h-1.5 rounded-full bg-primary-500 inline-block" />
-      {children}
-    </span>
-  );
-}
-
 interface SectionHeadingProps {
   badge?: string;
   title: string;
@@ -21,8 +7,8 @@ interface SectionHeadingProps {
   description?: string;
   centered?: boolean;
   className?: string;
-  titleClassName?: string;
-  light?: boolean;
+  /** Use gradient text on the accent */
+  gradientAccent?: boolean;
 }
 
 export function SectionHeading({
@@ -32,38 +18,26 @@ export function SectionHeading({
   description,
   centered = false,
   className,
-  titleClassName,
-  light = false,
+  gradientAccent = true,
 }: SectionHeadingProps) {
   return (
     <div className={cn(centered && "text-center", className)}>
       {badge && (
-        <div className={cn("mb-4", centered && "flex justify-center")}>
-          <SectionBadge>{badge}</SectionBadge>
-        </div>
+        <p className="eyebrow mb-4" aria-label={`Section: ${badge}`}>
+          {centered && <span className="eyebrow-line mx-auto mr-2" />}
+          {badge}
+        </p>
       )}
-      <h2
-        className={cn(
-          "font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4",
-          light ? "text-white" : "text-neutral-900",
-          titleClassName
-        )}
-      >
+      <h2 className="font-display font-bold text-[var(--text-primary)] mb-4">
         {title}{" "}
         {accent && (
-          <span className={light ? "text-primary-300" : "gradient-text"}>
+          <span className={cn(gradientAccent ? "gradient-text" : "text-brand-600 dark:text-brand-400")}>
             {accent}
           </span>
         )}
       </h2>
       {description && (
-        <p
-          className={cn(
-            "text-base sm:text-lg leading-relaxed max-w-4xl",
-            light ? "text-neutral-300" : "text-neutral-500",
-            centered && "mx-auto"
-          )}
-        >
+        <p className={cn("text-[var(--text-secondary)] leading-relaxed max-w-[65ch]", centered && "mx-auto")} style={{ fontSize: "1.0625rem" }}>
           {description}
         </p>
       )}
