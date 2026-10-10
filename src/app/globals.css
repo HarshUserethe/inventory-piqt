@@ -613,6 +613,37 @@
     animation: shinyTextPass 5s linear infinite;
   }
 
+  @keyframes marqueeVertical {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-50%); }
+  }
+
+  @keyframes marqueeVerticalReverse {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(0%); }
+  }
+
+  .animate-marquee-vertical {
+    animation: marqueeVertical 28s linear infinite;
+  }
+
+  .animate-marquee-vertical-reverse {
+    animation: marqueeVerticalReverse 32s linear infinite;
+  }
+
+  @keyframes marqueeHorizontal {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee-horizontal {
+    animation: marqueeHorizontal 35s linear infinite;
+  }
+
+  .pause-on-hover:hover .animate-marquee-horizontal {
+    animation-play-state: paused !important;
+  }
+
   .animate-fade-up  { animation: fadeUp 0.6s ease-out forwards; }
   .animate-fade-in  { animation: fadeIn 0.5s ease-out forwards; }
   .animate-float    { animation: float 6s ease-in-out infinite; }
