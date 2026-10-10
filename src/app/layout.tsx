@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -8,68 +7,82 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
-const gilroy = localFont({
+const fontSans = localFont({
   src: [
-    { path: "../fonts/Gilroy-Regular.woff",   weight: "400", style: "normal" },
-    { path: "../fonts/Gilroy-Medium.woff",    weight: "500", style: "normal" },
-    { path: "../fonts/Gilroy-SemiBold.woff",  weight: "600", style: "normal" },
-    { path: "../fonts/Gilroy-Bold.woff",      weight: "700", style: "normal" },
-    { path: "../fonts/Gilroy-ExtraBold.woff", weight: "800", style: "normal" },
+    {
+      path: "../fonts/WOFF/2973a56659bcee89-s.p.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/WOFF/f2503a1b2c7bf496-s.p.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/WOFF/22a5144ee8d83bca-s.p.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Gilroy-Bold.woff",
+      weight: "700",
+      style: "normal",
+    },
   ],
-  variable: "--font-gilroy",
+  variable: "--font-sans",
   display: "swap",
+  preload: true,
 });
 
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sora",
+const fontSerif = localFont({
+  src: [
+    {
+      path: "../fonts/WOFF/cb9f64d62d112b41-s.p.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/WOFF/6448e9c529f1ef4a-s.p.woff2",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-serif",
   display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Process IQ Tech | Intelligent Business Process Management",
-    template: "%s | Process IQ Tech",
+    default: "Visuvate | Premium Digital Agency & Design Studio",
+    template: "%s | Visuvate",
   },
   description:
-    "Process IQ Tech delivers AI-powered BPM solutions that streamline operations, reduce costs, and accelerate growth for 500+ global enterprises.",
+    "Crafted websites, lasting impressions. Premium web design and development studio.",
   keywords: [
-    "Business Process Management",
-    "BPM Consulting",
-    "Process Automation",
-    "RPA",
-    "Intelligent Automation",
-    "BPO Services",
-    "Workflow Optimization",
-    "Process Intelligence",
-    "Call Center",
-    "Customer Support",
+    "Web Design",
+    "Design Studio",
+    "Digital Agency",
+    "Web Development",
+    "UI/UX Design",
+    "Visuvate",
   ],
-  authors: [{ name: "Process IQ Tech" }],
-  creator: "Process IQ Tech",
-  metadataBase: new URL("https://www.processiqtechconsulting.com"),
+  authors: [{ name: "Visuvate" }],
+  creator: "Visuvate",
+  metadataBase: new URL("https://visuvate.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.processiqtechconsulting.com",
-    siteName: "Process IQ Tech",
-    title: "Process IQ Tech | Intelligent Business Process Management",
-    description:
-      "AI-powered BPM solutions that streamline operations and accelerate growth for global enterprises.",
+    url: "https://visuvate.com",
+    siteName: "Visuvate",
+    title: "Visuvate | Premium Digital Agency",
+    description: "Crafted websites, lasting impressions.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Process IQ Tech",
-    description: "Intelligent Business Process Management for global enterprises.",
-    creator: "@processiqtech",
+    title: "Visuvate",
+    description: "Crafted websites, lasting impressions.",
   },
   robots: {
     index: true,
@@ -85,14 +98,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${gilroy.variable} ${sora.variable} ${inter.variable}`}
+      className={`dark ${fontSans.variable} ${fontSerif.variable}`}
       suppressHydrationWarning
     >
-      <body className="antialiased font-sans" suppressHydrationWarning>
+      <body className="antialiased font-sans bg-slate-50 text-slate-900 dark:bg-black dark:text-white transition-colors duration-300" suppressHydrationWarning>
         <ThemeProvider>
-          <a href="#main-content" className="skip-link">
-            Skip to main content
-          </a>
           <ScrollProgress />
           <SmoothScroll>
             <Navbar />
@@ -104,3 +114,4 @@ export default function RootLayout({
     </html>
   );
 }
+

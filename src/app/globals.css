@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================================
    Process IQ Tech — Design System
    Brand: Crimson red (#E11D2E) × dark navy (#0A0B10)
@@ -53,27 +55,27 @@
 
 /* ---------- TAILWIND THEME TOKENS ---------- */
 @theme {
-  --font-sans: var(--font-sora), var(--font-gilroy), "Gilroy", system-ui, sans-serif;
-  --font-display: var(--font-sora), var(--font-gilroy), "Gilroy", system-ui, sans-serif;
-  --font-body: var(--font-inter), var(--font-gilroy), "Gilroy", system-ui, sans-serif;
-  --font-gilroy: "Gilroy", system-ui, sans-serif;
+  --font-sans: var(--font-sans), "GT Walsheim Trial", "Geist", system-ui, sans-serif;
+  --font-serif: var(--font-serif), "Fraunces", Georgia, serif;
+  --font-display: var(--font-sans), "GT Walsheim Trial", "Geist", system-ui, sans-serif;
+  --font-body: var(--font-sans), "GT Walsheim Trial", "Geist", system-ui, sans-serif;
 
-  /* Brand — Crimson */
-  --color-brand-50:  #FEF2F2;
-  --color-brand-100: #FEE2E2;
-  --color-brand-200: #FECACA;
-  --color-brand-300: #FCA5A5;
-  --color-brand-400: #F87171;
-  --color-brand-500: #EF4444;
-  --color-brand-600: #E11D2E;
-  --color-brand-700: #C4111F;
-  --color-brand-800: #991B1B;
-  --color-brand-900: #7F1D1D;
+  /* Brand — Hero Blue */
+  --color-brand-50:  #EFF6FF;
+  --color-brand-100: #DBEAFE;
+  --color-brand-200: #BFDBFE;
+  --color-brand-300: #93C5FD;
+  --color-brand-400: #60A5FA;
+  --color-brand-500: #3B82F6;
+  --color-brand-600: #1A73FF;
+  --color-brand-700: #1D4ED8;
+  --color-brand-800: #1E40AF;
+  --color-brand-900: #1E3A8A;
 
-  /* Accent — coral */
-  --color-coral-400: #FF7A5A;
-  --color-coral-500: #FF5A36;
-  --color-coral-600: #E84A25;
+  /* Accent — Blue Glow */
+  --color-coral-400: #60A5FA;
+  --color-coral-500: #3B82F6;
+  --color-coral-600: #1D4ED8;
 
   /* Secondary — Electric Indigo */
   --color-indigo-500: #5B5BFF;
@@ -110,17 +112,17 @@
   --color-neutral-950: #020617;
 
   /* Legacy primary kept for existing components that reference primary-* */
-  --color-primary-50:  #FEF2F2;
-  --color-primary-100: #FEE2E2;
-  --color-primary-200: #FECACA;
-  --color-primary-300: #FCA5A5;
-  --color-primary-400: #F87171;
-  --color-primary-500: #EF4444;
-  --color-primary-600: #E11D2E;
-  --color-primary-700: #C4111F;
-  --color-primary-800: #991B1B;
-  --color-primary-900: #7F1D1D;
-  --color-primary-950: #450A0A;
+  --color-primary-50:  #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #BFDBFE;
+  --color-primary-300: #93C5FD;
+  --color-primary-400: #60A5FA;
+  --color-primary-500: #3B82F6;
+  --color-primary-600: #1A73FF;
+  --color-primary-700: #1D4ED8;
+  --color-primary-800: #1E40AF;
+  --color-primary-900: #1E3A8A;
+  --color-primary-950: #030712;
 
   /* Legacy accent kept */
   --color-accent-50:  #ECFDF5;
@@ -159,18 +161,18 @@
     --text-secondary:#4A4F63;
     --text-muted:    #80859A;
 
-    /* Brand */
-    --brand:         #E11D2E;
-    --brand-hover:   #C4111F;
-    --brand-coral:   #FF5A36;
-    --brand-gradient: linear-gradient(135deg, #E11D2E 0%, #FF5A36 100%);
-    --brand-glow:    rgba(225, 29, 46, 0.25);
+    /* Brand — Hero Blue */
+    --brand:         #1A73FF;
+    --brand-hover:   #1D4ED8;
+    --brand-coral:   #3B82F6;
+    --brand-gradient: linear-gradient(135deg, #1A73FF 0%, #3B82F6 100%);
+    --brand-glow:    rgba(26, 115, 255, 0.25);
 
     /* Shadows */
     --shadow-card:  0 4px 24px rgba(0,0,0,0.06);
     --shadow-hover: 0 8px 40px rgba(0,0,0,0.10);
-    --shadow-brand: 0 8px 30px rgba(225,29,46,0.30);
-    --shadow-brand-lg: 0 16px 50px rgba(225,29,46,0.35);
+    --shadow-brand: 0 8px 30px rgba(26, 115, 255, 0.30);
+    --shadow-brand-lg: 0 16px 50px rgba(26, 115, 255, 0.35);
   }
 
   .dark {
@@ -309,7 +311,7 @@
 
   /* ---- Gradient text ---- */
   .gradient-text {
-    background: var(--brand-gradient);
+    background: linear-gradient(135deg, #1A73FF 0%, #60A5FA 50%, #3B82F6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -371,7 +373,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #C4111F 0%, #E84A25 100%);
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
     opacity: 0;
     transition: opacity 0.25s ease;
   }
@@ -400,7 +402,7 @@
   }
 
   .btn-secondary:hover {
-    background: rgba(225, 29, 46, 0.06);
+    background: rgba(26, 115, 255, 0.08);
     transform: translateY(-2px);
   }
 
@@ -481,9 +483,9 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.375rem 1rem;
-    background-color: rgba(225, 29, 46, 0.08);
+    background-color: rgba(26, 115, 255, 0.08);
     color: var(--brand);
-    border: 1px solid rgba(225, 29, 46, 0.15);
+    border: 1px solid rgba(26, 115, 255, 0.18);
     border-radius: 9999px;
     font-size: 0.8125rem;
     font-weight: 600;
@@ -492,7 +494,7 @@
   }
 
   .dark .section-badge {
-    background-color: rgba(225, 29, 46, 0.12);
+    background-color: rgba(26, 115, 255, 0.12);
   }
 
   /* ---- btn-outline-white (for dark backgrounds) ---- */
@@ -598,17 +600,48 @@
   .animate-shiny-text {
     background: linear-gradient(
       110deg,
-      #E11D2E 0%,
-      #FF5A36 30%,
+      #1A73FF 0%,
+      #3B82F6 30%,
       #FFFFFF 48%,
-      #FF5A36 65%,
-      #E11D2E 100%
+      #3B82F6 65%,
+      #1A73FF 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: shinyTextPass 5s linear infinite;
+  }
+
+  @keyframes marqueeVertical {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-50%); }
+  }
+
+  @keyframes marqueeVerticalReverse {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(0%); }
+  }
+
+  .animate-marquee-vertical {
+    animation: marqueeVertical 28s linear infinite;
+  }
+
+  .animate-marquee-vertical-reverse {
+    animation: marqueeVerticalReverse 32s linear infinite;
+  }
+
+  @keyframes marqueeHorizontal {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee-horizontal {
+    animation: marqueeHorizontal 35s linear infinite;
+  }
+
+  .pause-on-hover:hover .animate-marquee-horizontal {
+    animation-play-state: paused !important;
   }
 
   .animate-fade-up  { animation: fadeUp 0.6s ease-out forwards; }
@@ -643,3 +676,126 @@
     .animate-float, .animate-float-slow { animation: none; }
   }
 }
+
+/* ============================================================
+   VISUVATE HERO SPECIFIC STYLES
+   ============================================================ */
+
+/* Signature Mixed Sans + Serif Headline */
+.signature-headline {
+  font-size: clamp(2.5rem, 6.25vw, 6.25rem);
+  line-height: 1.1;
+  color: #0f172a;
+  text-align: center;
+  text-wrap: balance;
+  position: relative;
+  z-index: 20;
+  -webkit-font-smoothing: antialiased;
+  transition: color 0.3s ease;
+}
+
+.dark .signature-headline {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .signature-headline {
+    font-size: clamp(2rem, 8.5vw, 3.2rem);
+    line-height: 1.15;
+  }
+}
+
+.signature-headline .sans {
+  font-family: var(--font-sans), 'GT Walsheim Trial', 'Geist', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  display: inline-block;
+}
+
+.signature-headline .serif {
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  font-size: 1.05em;
+  display: inline-block;
+  vertical-align: baseline;
+  color: #1A73FF;
+  transition: color 0.3s ease;
+}
+
+.dark .signature-headline .serif {
+  color: inherit;
+}
+
+/* Soft Blue Vignette Glow (GPU Accelerated) */
+.hero-glow-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.hero-glow-left {
+  position: absolute;
+  top: 10%;
+  left: -15%;
+  width: 55vw;
+  height: 85vh;
+  background: radial-gradient(ellipse at center, rgba(26, 115, 255, 0.16) 0%, rgba(26, 115, 255, 0.06) 40%, transparent 75%);
+  transform: translateZ(0);
+  will-change: transform;
+  opacity: 0.9;
+  transition: background 0.3s ease;
+}
+
+.dark .hero-glow-left {
+  background: radial-gradient(ellipse at center, rgba(10, 79, 179, 0.40) 0%, rgba(10, 79, 179, 0.20) 35%, rgba(10, 79, 179, 0.05) 60%, transparent 80%);
+}
+
+.hero-glow-right {
+  position: absolute;
+  top: 10%;
+  right: -15%;
+  width: 55vw;
+  height: 85vh;
+  background: radial-gradient(ellipse at center, rgba(26, 115, 255, 0.16) 0%, rgba(26, 115, 255, 0.06) 40%, transparent 75%);
+  transform: translateZ(0);
+  will-change: transform;
+  opacity: 0.9;
+  transition: background 0.3s ease;
+}
+
+.dark .hero-glow-right {
+  background: radial-gradient(ellipse at center, rgba(10, 79, 179, 0.40) 0%, rgba(10, 79, 179, 0.20) 35%, rgba(10, 79, 179, 0.05) 60%, transparent 80%);
+}
+
+.hero-glow-bottom {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  height: 500px;
+  background: radial-gradient(ellipse at center bottom, rgba(26, 115, 255, 0.18) 0%, rgba(26, 115, 255, 0.05) 45%, transparent 75%);
+  transform: translateZ(0);
+  will-change: transform;
+  transition: background 0.3s ease;
+}
+
+.dark .hero-glow-bottom {
+  background: radial-gradient(ellipse at center bottom, rgba(26, 115, 255, 0.35) 0%, rgba(10, 79, 179, 0.15) 45%, transparent 75%);
+}
+
+/* Editor Frame Glow */
+.editor-frame {
+  background: #0b0b0b;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 0 0 1px rgba(26, 115, 255, 0.25),
+    0 25px 90px rgba(0, 0, 0, 0.95),
+    0 0 60px rgba(26, 115, 255, 0.22);
+}
+

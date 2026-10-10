@@ -2,366 +2,99 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import {
-  Menu, X, ChevronDown, ArrowRight, Phone,
-  Users, Lightbulb, PhoneCall, Database, CreditCard, ArrowUpRight,
-} from "lucide-react";
-import { navLinks, siteConfig } from "@/config/site";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Menu, X, Phone } from "lucide-react";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
-const servicesDropdown = [
-  { label: "Operations Support",      href: "/services#operations-support",  Icon: Users },
-  { label: "Advisory",                href: "/services#advisory",            Icon: Lightbulb },
-  { label: "Customer Support & Sales",href: "/services#customer-sales",      Icon: PhoneCall },
-  { label: "Data Processing & Mining",href: "/services#data-services",       Icon: Database },
-  { label: "Financial Reconciliation",href: "/services#financial-services",  Icon: CreditCard },
+const navLinks = [
+  { label: "Home", href: "/", num: "01" },
+  { label: "About", href: "/about", num: "02" },
+  { label: "Services", href: "/services", num: "03" },
+  { label: "Why Us?", href: "/why-us", num: "04" },
+  { label: "Careers", href: "/careers", num: "05" },
+  { label: "FAQs", href: "/faqs", num: "06" },
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen]         = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const pathname = usePathname();
 
   useEffect(() => {
-    const handle = () => setIsScrolled(window.scrollY > 20);
-    handle();
-    window.addEventListener("scroll", handle, { passive: true });
-    return () => window.removeEventListener("scroll", handle);
+    setMounted(true);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     setIsOpen(false);
-    setServicesOpen(false);
-    setMobileServicesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
-  const navText = (active: boolean) =>
-    cn(
-      "text-[0.84rem] font-medium transition-colors duration-200",
-      active
-        ? isScrolled
-          ? "text-brand-600 dark:text-brand-400 font-semibold"
-          : "text-white font-semibold"
-        : isScrolled
-        ? "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
-        : "text-white/80 hover:text-white"
-    );
+  const isDarkMode = mounted ? (theme === "dark" || resolvedTheme === "dark") : true;
+
+  const toggleTheme = () => {
+    setTheme(isDarkMode ? "light" : "dark");
+  };
 
   return (
     <>
-      <nav
-        role="navigation"
-        aria-label="Main navigation"
+      <header
+        role="banner"
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-white/90 dark:bg-dark-surface/90 backdrop-blur-md border-b border-neutral-200/60 dark:border-white/8 shadow-sm"
-            : "bg-transparent"
+            ? "bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl py-3"
+            : "bg-transparent py-5"
         )}
-        style={{ height: "var(--navbar-h)" }}
       >
-        <div className="container-custom h-full flex items-center justify-between gap-6">
-
-          {/* Logo */}
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 flex items-center justify-between">
+          {/* Left: Logo */}
           <Link
             href="/"
-            aria-label="Process IQ Tech — Home"
-            className="relative flex items-center shrink-0"
+            aria-label="ProcessIQTech Home"
+            className="flex items-center gap-2.5 group focus:outline-none"
           >
-            <div className="relative h-10 w-auto flex items-center">
-              {/* Light theme logo (dark text) */}
-              <Image
-                src="/logo-black.png"
-                alt="Process IQ Tech"
-                width={635}
-                height={166}
-                priority
-                className={cn(
-                  "h-9 w-auto object-contain transition-opacity duration-300 absolute",
-                  isScrolled ? "opacity-100 dark:opacity-0" : "opacity-0"
-                )}
-              />
-              {/* Dark / transparent logo (white text) */}
-              <Image
-                src="/logo-white.png"
-                alt="Process IQ Tech"
-                width={635}
-                height={166}
-                priority
-                className={cn(
-                  "h-9 w-auto object-contain transition-opacity duration-300",
-                  isScrolled ? "opacity-0 dark:opacity-100" : "opacity-100"
-                )}
-              />
+            {/* Logo Mark Icon */}
+            <div className="w-8 h-8 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-black flex items-center justify-center font-extrabold text-lg tracking-tighter group-hover:scale-105 transition-transform">
+              P
             </div>
+            {/* Wordmark */}
+            <span className="text-[24px] font-bold text-slate-900 dark:text-white tracking-tight">
+              ProcessIQ<span className="text-[#1A73FF]">Tech</span>
+            </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
+          {/* Center: Nav links */}
+          <nav
+            aria-label="Main Navigation"
+            className="hidden md:flex items-center gap-7 lg:gap-8"
+          >
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-
-              if (link.label === "Services") {
-                const isServicesActive = pathname.startsWith("/services");
-                return (
-                  <div
-                    key={link.label}
-                    className="relative group"
-                    onMouseEnter={() => setServicesOpen(true)}
-                    onMouseLeave={() => setServicesOpen(false)}
-                  >
-                    <button
-                      className={cn(
-                        "relative flex items-center gap-1 px-3 py-2 rounded-lg transition-all",
-                        navText(isServicesActive)
-                      )}
-                      aria-expanded={servicesOpen}
-                      aria-haspopup="true"
-                    >
-                      <span>Services</span>
-                      <ChevronDown
-                        className={cn(
-                          "w-3.5 h-3.5 transition-transform duration-200",
-                          servicesOpen && "rotate-180"
-                        )}
-                      />
-                    </button>
-
-                    {/* Mega dropdown */}
-                    <div
-                      className={cn(
-                        "absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200",
-                        servicesOpen
-                          ? "opacity-100 translate-y-0 pointer-events-auto"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
-                      )}
-                    >
-                      <div className="w-80 bg-white dark:bg-dark-elevated rounded-2xl shadow-2xl border border-neutral-100 dark:border-white/8 p-2 overflow-hidden">
-                        {servicesDropdown.map((item) => {
-                          const IconComponent = item.Icon;
-                          return (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-brand-50 dark:hover:bg-brand-600/10 group/item transition-all duration-150"
-                            >
-                              <span className="w-8 h-8 rounded-lg bg-brand-50 dark:bg-brand-600/10 flex items-center justify-center shrink-0 group-hover/item:bg-brand-100 dark:group-hover/item:bg-brand-600/20 transition-colors">
-                                <IconComponent className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-                              </span>
-                              <span className="text-[0.84rem] font-medium text-neutral-700 dark:text-neutral-300 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 transition-colors">
-                                {item.label}
-                              </span>
-                            </Link>
-                          );
-                        })}
-                        <div className="border-t border-neutral-100 dark:border-white/8 mt-1 pt-1">
-                          <Link
-                            href="/services"
-                            className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-brand-50 dark:hover:bg-brand-600/10 group/all transition-all duration-150"
-                          >
-                            <span className="text-[0.84rem] font-semibold text-brand-600 dark:text-brand-400">
-                              View All Services
-                            </span>
-                            <ArrowRight className="w-4 h-4 text-brand-600 dark:text-brand-400 group-hover/all:translate-x-1 transition-transform" />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-
+              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
               return (
                 <Link
-                  key={link.href}
+                  key={link.label}
                   href={link.href}
                   className={cn(
-                    "relative px-3 py-2 rounded-lg transition-all",
-                    navText(isActive)
-                  )}
-                >
-                  <span>{link.label}</span>
-                  {isActive && (
-                    <span className="absolute bottom-0.5 left-3 right-3 h-[2px] rounded-full bg-brand-600 dark:bg-brand-400" />
-                  )}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Right actions */}
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
-            {/* Phone */}
-            <a
-              href={`tel:${siteConfig.phone}`}
-              className={cn(
-                "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[0.82rem] font-medium transition-colors",
-                isScrolled
-                  ? "text-neutral-500 dark:text-neutral-400 hover:text-brand-600 dark:hover:text-brand-400"
-                  : "text-white/70 hover:text-white"
-              )}
-            >
-              <Phone className="w-3.5 h-3.5" />
-              <span className="hidden xl:inline">{siteConfig.phone}</span>
-            </a>
-
-            {/* Theme toggle */}
-            <ThemeToggle scrolled={isScrolled} />
-
-            {/* CTA */}
-            <Link
-              href="/contact"
-              className="btn-primary text-sm px-5 h-10"
-              id="navbar-cta"
-            >
-              Get Started
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          {/* Mobile hamburger */}
-          <div className="lg:hidden flex items-center gap-2">
-            <ThemeToggle scrolled={isScrolled} />
-            <button
-              className={cn(
-                "p-2 rounded-xl transition-colors",
-                isScrolled
-                  ? "hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-700 dark:text-neutral-300"
-                  : "hover:bg-white/10 text-white"
-              )}
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={isOpen}
-              aria-controls="mobile-menu"
-            >
-              {isOpen
-                ? <X className="w-5 h-5" />
-                : <Menu className="w-5 h-5" />
-              }
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile drawer */}
-      <div
-        id="mobile-menu"
-        className={cn(
-          "fixed inset-0 z-[60] lg:hidden transition-all duration-300",
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        )}
-      >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          onClick={() => setIsOpen(false)}
-          aria-hidden="true"
-        />
-
-        {/* Drawer panel */}
-        <div
-          className={cn(
-            "absolute top-0 right-0 h-full w-80 max-w-[90vw] bg-white dark:bg-dark-elevated shadow-2xl transition-transform duration-300 flex flex-col",
-            isOpen ? "translate-x-0" : "translate-x-full"
-          )}
-        >
-          {/* Drawer header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 dark:border-white/8">
-            <Link href="/" onClick={() => setIsOpen(false)}>
-              <Image
-                src="/logo-black.png"
-                alt="Process IQ Tech"
-                width={635}
-                height={166}
-                className="h-8 w-auto object-contain dark:hidden"
-              />
-              <Image
-                src="/logo-white.png"
-                alt="Process IQ Tech"
-                width={635}
-                height={166}
-                className="h-8 w-auto object-contain hidden dark:block"
-              />
-            </Link>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="p-2 rounded-xl text-neutral-500 hover:bg-neutral-100 dark:hover:bg-white/10 dark:text-neutral-400"
-              aria-label="Close menu"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Links */}
-          <nav className="flex-1 overflow-y-auto px-4 py-4 space-y-1">
-            {navLinks.map((link, i) => {
-              const isActive = pathname === link.href;
-
-              if (link.label === "Services") {
-                return (
-                  <div key={link.label}>
-                    <button
-                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                      className={cn(
-                        "w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all",
-                        pathname.startsWith("/services")
-                          ? "text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-600/10"
-                          : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-white/5"
-                      )}
-                      style={{ animationDelay: `${i * 50}ms` }}
-                    >
-                      Services
-                      <ChevronDown className={cn("w-4 h-4 transition-transform", mobileServicesOpen && "rotate-180")} />
-                    </button>
-                    {mobileServicesOpen && (
-                      <div className="pl-4 mt-1 space-y-1">
-                        {servicesDropdown.map((item) => {
-                          const IconComponent = item.Icon;
-                          return (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-neutral-600 dark:text-neutral-400 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-600/10 transition-all"
-                            >
-                              <IconComponent className="w-4 h-4 shrink-0" />
-                              {item.label}
-                            </Link>
-                          );
-                        })}
-                        <Link
-                          href="/services"
-                          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-brand-600 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-600/10 transition-all"
-                        >
-                          View All Services
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "flex items-center px-4 py-3.5 rounded-xl text-base font-medium transition-all",
+                    "text-[14px] sm:text-[15px] tracking-wide transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-md px-1 py-0.5",
                     isActive
-                      ? "text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-600/10"
-                      : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-white/5"
+                      ? "text-slate-900 dark:text-white font-semibold"
+                      : "text-slate-600 dark:text-[#a1a1a1] hover:text-slate-900 dark:hover:text-white font-medium"
                   )}
-                  style={{ animationDelay: `${i * 50}ms` }}
                 >
                   {link.label}
                 </Link>
@@ -369,21 +102,146 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Footer CTA */}
-          <div className="border-t border-neutral-100 dark:border-white/8 px-6 py-5 space-y-3">
-            <div className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
-              <Phone className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-              <span>{siteConfig.phone}</span>
-            </div>
+          {/* Right: Theme Toggle + Phone Number + "Let's Connect" CTA */}
+          <div className="hidden md:flex items-center gap-3.5">
+            {/* Theme-toggle switch */}
+            <button
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+              className="relative w-[50px] h-[26px] rounded-full bg-slate-200 dark:bg-[#1e1e1e] border border-slate-300 dark:border-white/10 p-0.5 transition-colors hover:border-slate-400 dark:hover:border-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 cursor-pointer"
+            >
+              <div
+                className={cn(
+                  "w-[20px] h-[20px] rounded-full bg-white dark:bg-white shadow-md transition-transform duration-300 ease-out flex items-center justify-center",
+                  isDarkMode ? "translate-x-[22px]" : "translate-x-0"
+                )}
+              >
+                {isDarkMode ? (
+                  <span className="w-2 h-2 rounded-full bg-black/80" />
+                ) : (
+                  <span className="w-2 h-2 rounded-full bg-amber-500" />
+                )}
+              </div>
+            </button>
+
+            {/* Phone Number Link */}
+            <a
+              href="tel:+919515783300"
+              aria-label="Call Process IQ Tech"
+              className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] font-medium text-slate-700 dark:text-white/90 hover:text-slate-900 dark:hover:text-white transition-colors px-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#1A73FF]" />
+              <span>+91 9515783300</span>
+            </a>
+
+            {/* Pill button "Let's Connect" */}
             <Link
               href="/contact"
-              className="btn-primary w-full justify-center"
-              onClick={() => setIsOpen(false)}
+              className="inline-flex items-center justify-center h-[40px] px-5 sm:px-6 rounded-full bg-[#1A73FF] text-white dark:bg-white dark:text-black text-[14px] sm:text-[15px] font-semibold transition-all hover:bg-blue-600 dark:hover:bg-neutral-200 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/80 shadow-md shadow-blue-500/15"
             >
-              Schedule Free Assessment
-              <ArrowRight className="w-4 h-4" />
+              Let&apos;s Connect
             </Link>
           </div>
+
+          {/* Mobile Burger Button */}
+          <div className="flex md:hidden items-center gap-3">
+            {/* Theme Toggle Mobile */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle Theme"
+              className="w-[48px] h-[28px] rounded-full bg-slate-200 dark:bg-[#1e1e1e] border border-slate-300 dark:border-white/10 p-1 relative"
+            >
+              <div
+                className={cn(
+                  "w-[20px] h-[20px] rounded-full bg-white transition-transform duration-300",
+                  isDarkMode ? "translate-x-[20px]" : "translate-x-0"
+                )}
+              />
+            </button>
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-full bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20 transition-colors focus:outline-none"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Drawer */}
+      <div
+        className={cn(
+          "fixed inset-0 z-[60] bg-slate-50 dark:bg-black text-slate-900 dark:text-white transition-all duration-500 flex flex-col justify-between px-8 py-10 md:hidden",
+          isOpen
+            ? "opacity-100 pointer-events-auto translate-y-0"
+            : "opacity-0 pointer-events-none -translate-y-full"
+        )}
+      >
+        {/* Top bar inside menu */}
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+            <div className="w-8 h-8 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-black flex items-center justify-center font-extrabold text-lg">
+              P
+            </div>
+            <span className="text-[22px] font-bold text-slate-900 dark:text-white">
+              ProcessIQ<span className="text-[#1A73FF]">Tech</span>
+            </span>
+          </Link>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="p-2 rounded-full bg-slate-200 dark:bg-white/10 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-white/20"
+            aria-label="Close menu"
+          >
+            <X className="w-7 h-7" />
+          </button>
+        </div>
+
+        {/* Numbered Navigation List */}
+        <nav className="my-auto flex flex-col space-y-6">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="group flex items-baseline gap-4 text-left border-b border-slate-200 dark:border-white/10 pb-4"
+              >
+                <span className="text-sm font-mono text-slate-500 dark:text-[#a1a1a1] group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+                  {link.num}
+                </span>
+                <span
+                  className={cn(
+                    "text-3xl font-medium tracking-tight transition-all group-hover:translate-x-2",
+                    isActive ? "text-slate-900 dark:text-white font-bold" : "text-slate-600 dark:text-neutral-400 group-hover:text-slate-900 dark:group-hover:text-white"
+                  )}
+                >
+                  {link.label}
+                </span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Drawer Bottom CTA */}
+        <div className="pt-6 flex flex-col gap-3">
+          <a
+            href="tel:+919515783300"
+            className="w-full flex items-center justify-center gap-2 h-[48px] rounded-full border border-slate-300 dark:border-white/20 text-slate-900 dark:text-white text-[16px] font-medium"
+          >
+            <Phone className="w-4 h-4 text-[#1A73FF]" />
+            <span>+91 9515783300</span>
+          </a>
+          <Link
+            href="/contact"
+            onClick={() => setIsOpen(false)}
+            className="w-full flex items-center justify-center h-[52px] rounded-full bg-[#1A73FF] text-white dark:bg-white dark:text-black text-[18px] font-semibold"
+          >
+            Let&apos;s Connect
+          </Link>
         </div>
       </div>
     </>

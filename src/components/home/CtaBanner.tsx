@@ -14,10 +14,10 @@ export default function CtaBanner() {
       {/* Background */}
       <div className="absolute inset-0 bg-[#0A0B10]" aria-hidden="true" />
 
-      {/* Crimson radial glows */}
+      {/* Blue radial glows */}
       <div
         className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-[120px] opacity-25 pointer-events-none"
-        style={{ background: "radial-gradient(circle, #E11D2E 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, #1A73FF 0%, transparent 70%)" }}
         aria-hidden="true"
       />
       <div

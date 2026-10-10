@@ -28,7 +28,7 @@ export default function TestimonialsSection() {
             {/* Background glow */}
             <div
               className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[100px] pointer-events-none opacity-20"
-              style={{ background: "radial-gradient(circle, #E11D2E 0%, transparent 70%)" }}
+              style={{ background: "radial-gradient(circle, #1A73FF 0%, transparent 70%)" }}
               aria-hidden="true"
             />
 
@@ -72,7 +72,10 @@ export default function TestimonialsSection() {
               {/* Stats side */}
               <div className="lg:col-span-2 flex flex-col gap-5">
                 {/* Result badge */}
-                <div className="inline-flex items-center gap-3 px-5 py-4 rounded-2xl bg-brand-gradient shadow-brand w-fit">
+                <div
+                  className="inline-flex items-center gap-3 px-5 py-4 rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-500/25 w-fit"
+                  style={{ background: "linear-gradient(135deg, #1A73FF 0%, #3B82F6 100%)" }}
+                >
                   <TrendingUp className="w-6 h-6 text-white" aria-hidden="true" />
                   <div>
                     <p className="text-white font-bold text-xl leading-none">{primary.result}</p>

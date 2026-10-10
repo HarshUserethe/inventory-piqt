@@ -41,7 +41,7 @@ export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Why Us", href: "/why-us" },
+  { label: "Why Us?", href: "/why-us" },
   { label: "Careers", href: "/careers" },
   { label: "FAQs", href: "/faqs" },
 ];
@@ -64,7 +64,5 @@ export const footerLinks = {
   legal: [
     { label: "Privacy Policy", href: "/legal/privacy" },
     { label: "Terms of Service", href: "/legal/terms" },
-    { label: "Cookie Policy", href: "/legal/cookies" },
-    { label: "Security", href: "/legal/security" },
   ],
 };

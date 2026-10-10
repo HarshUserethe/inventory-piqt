@@ -31,7 +31,12 @@ export function SectionHeading({
       <h2 className="font-display font-bold text-[var(--text-primary)] mb-4">
         {title}{" "}
         {accent && (
-          <span className={cn(gradientAccent ? "gradient-text" : "text-brand-600 dark:text-brand-400")}>
+          <span
+            className={cn(
+              "font-serif italic font-normal tracking-tight inline-block",
+              gradientAccent ? "gradient-text" : "text-brand-600 dark:text-brand-400"
+            )}
+          >
             {accent}
           </span>
         )}
