@@ -7,7 +7,6 @@ import BpmAdvantagesSection from "@/components/home/BpmAdvantagesSection";
 import ProcessSection from "@/components/home/ProcessSection";
 import TechnologySection from "@/components/home/TechnologySection";
 import IndustriesSection from "@/components/home/IndustriesSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 import WhyUsSection from "@/components/home/WhyUsSection";
 import CtaBanner from "@/components/home/CtaBanner";
 import { siteSections } from "@/config/sections";
@@ -31,7 +30,6 @@ export default function HomePage() {
       {cfg.process && <ProcessSection />}
       {cfg.technology && <TechnologySection />}
       {cfg.industries && <IndustriesSection />}
-      {cfg.testimonials && <TestimonialsSection />}
       {cfg.whyUs && <WhyUsSection />}
       {cfg.ctaBanner && <CtaBanner />}
     </>

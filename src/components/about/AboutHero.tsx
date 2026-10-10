@@ -2,10 +2,10 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-// ── Per-Letter Text Roll Button ──
 interface TextRollButtonProps {
   label: string;
   href: string;
@@ -61,11 +61,9 @@ function TextRollButton({ label, href, primary = false }: TextRollButtonProps) {
   );
 }
 
-// ── Main Hero Section ──
-export default function HeroSection() {
+export default function AboutHero() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Parallax scroll effect
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -76,8 +74,8 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden flex flex-col justify-center items-center pt-28 pb-16 md:pt-36 md:pb-24 transition-colors duration-300"
-      aria-label="Visuvate Hero"
+      className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden flex flex-col justify-center items-center pt-32 pb-20 md:pt-40 md:pb-28 transition-colors duration-300"
+      aria-label="About Process IQ Tech"
     >
       {/* ── Soft Blue Vignette Glow (GPU Accelerated) ── */}
       <motion.div
@@ -90,9 +88,8 @@ export default function HeroSection() {
         <div className="hero-glow-bottom" />
       </motion.div>
 
-      {/* ── Centered Hero Content Column ── */}
+      {/* ── Centered Content ── */}
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 text-center flex flex-col items-center justify-center my-auto">
-
         {/* Eyebrow Pill */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}
@@ -102,35 +99,21 @@ export default function HeroSection() {
         >
           <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/90 dark:bg-black/60 border border-slate-200/80 dark:border-white/15 backdrop-blur-md text-slate-800 dark:text-white text-[16px] font-semibold tracking-wide shadow-sm dark:shadow-none transition-colors duration-300">
             <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-500 animate-pulse" />
-            Global BPM & Call Center Solutions
+            Our Story & Mission
           </div>
         </motion.div>
 
         {/* Signature Mixed Sans + Serif Headline */}
         <h1 className="signature-headline max-w-6xl mx-auto mb-6 relative z-20">
-          {/* Line 1 */}
-          <span className="block overflow-hidden pb-2 pt-1">
+          <span className="block overflow-hidden pb-3 pt-1 pr-6 sm:pr-8">
             <motion.span
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-block relative z-20"
+              className="inline-block relative z-20 pr-6 sm:pr-8"
             >
-              <span className="sans mr-3 sm:mr-5">Connecting</span>
-              <span className="serif italic">Businesses</span>
-            </motion.span>
-          </span>
-
-          {/* Line 2 */}
-          <span className="block overflow-hidden pb-3 pt-1">
-            <motion.span
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: "0%", opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-block relative z-20"
-            >
-              <span className="serif italic mr-3 sm:mr-5">With</span>
-              <span className="sans">Excellence</span>
+              <span className="sans mr-3 sm:mr-5">Who We</span>
+              <span className="serif italic pr-2">Are?</span>
             </motion.span>
           </span>
         </h1>
@@ -142,21 +125,62 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="text-slate-600 dark:text-[#a1a1a1] text-[20px] md:text-[18px] font-normal max-w-4xl mx-auto mb-10 leading-relaxed transition-colors duration-300"
         >
-          We are a 24/7 global call center empowering businesses with dedicated, accent-neutral customer support and business specialists. We fill operational gaps, helping business owners achieve seamless customer relations and scale efficiently.
+          We are a 24/7 global solution-oriented call center aimed at meeting customer relation goals. We fill operational gaps by employing a highly skilled, dedicated team of accent-neutral customer service professionals and business support specialists.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Capsule Image Button (Replaces standard buttons) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-4"
         >
-          <TextRollButton label="Get in touch" href="/contact" primary />
-          <TextRollButton label="Our services" href="/services" />
+          <Link
+            href="/contact"
+            aria-label="Connect with Process IQ Tech 24/7 Global Support Team"
+            className="group relative inline-flex items-center gap-4 h-16 sm:h-20 px-4 sm:px-6 pl-3.5 rounded-full bg-white/90 dark:bg-[#12141C]/90 border border-slate-200/90 dark:border-white/20 shadow-xl backdrop-blur-md hover:scale-[1.03] active:scale-95 transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl"
+          >
+            {/* Real Unsplash Call Center Representative Thumbnail */}
+            <div className="relative w-11 h-11 sm:w-14 sm:h-14 rounded-full overflow-hidden shrink-0 border-2 border-blue-500/40 shadow-md">
+              <Image
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+                alt="Process IQ Tech Global Support Specialist"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                sizes="56px"
+              />
+              <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#12141C]" />
+            </div>
+
+            {/* Capsule Info Text */}
+            <div className="text-left pr-2">
+              <div className="flex items-center gap-2">
+                <span className="text-slate-900 dark:text-white font-bold text-base sm:text-lg tracking-tight group-hover:text-[#1A73FF] dark:group-hover:text-[#3B82F6] transition-colors">
+                  24/7 Dedicated Support Team
+                </span>
+                <span className="hidden sm:inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                  Active
+                </span>
+              </div>
+              <p className="text-slate-500 dark:text-neutral-400 text-xs sm:text-sm font-medium">
+                Accent-neutral experts ready to scale your business
+              </p>
+            </div>
+
+            {/* Right Action Arrow Badge */}
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#1A73FF] text-white flex items-center justify-center shrink-0 group-hover:translate-x-1 transition-transform duration-300 shadow-md">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </div>
+          </Link>
         </motion.div>
       </div>
     </section>
   );
 }
-

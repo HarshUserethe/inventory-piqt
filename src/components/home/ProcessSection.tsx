@@ -44,7 +44,10 @@ export default function ProcessSection() {
                       <div className="card group hover:border-brand-600/40 flex flex-col sm:flex-row gap-4 items-start">
                         {/* Step number + icon */}
                         <div className="shrink-0">
-                          <div className="w-14 h-14 rounded-xl bg-brand-gradient flex items-center justify-center shadow-brand group-hover:scale-105 transition-transform duration-300">
+                          <div
+                            className="w-14 h-14 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-transform duration-300"
+                            style={{ background: "linear-gradient(135deg, #1A73FF 0%, #3B82F6 100%)" }}
+                          >
                             <Icon className="w-7 h-7 text-white" aria-hidden="true" />
                           </div>
                         </div>
@@ -66,7 +69,10 @@ export default function ProcessSection() {
 
                     {/* Center number (desktop only) */}
                     <div className={`hidden lg:flex ${isLeft ? "lg:order-2 justify-start" : "lg:order-1 justify-end"} items-center`}>
-                      <div className="relative z-10 w-12 h-12 rounded-full bg-brand-gradient flex items-center justify-center shadow-brand text-white font-bold text-base border-4 border-[var(--bg)]">
+                      <div
+                        className="relative z-10 w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/25 font-bold text-base border-4 border-[var(--bg)]"
+                        style={{ background: "linear-gradient(135deg, #1A73FF 0%, #3B82F6 100%)" }}
+                      >
                         {step.step}
                       </div>
                     </div>

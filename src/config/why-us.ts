@@ -4,8 +4,8 @@
 
 export const whyUsHero = {
   badge: "Why Process IQ Tech",
-  headline: "The Difference Between",
-  headlineAccent: "Good and Transformational",
+  headline: "Built For",
+  headlineAccent: "Results",
   description:
     "In a crowded market of BPM vendors and consultants, Process IQ Tech stands apart through a unique combination of deep domain expertise, proprietary technology, and an unwavering commitment to client outcomes.",
 };

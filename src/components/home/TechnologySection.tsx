@@ -81,7 +81,10 @@ export default function TechnologySection() {
           {capabilities.map((cap, index) => (
             <RevealOnScroll key={cap.title} delay={index * 100} className="h-full">
               <div className="card h-full text-center flex flex-col items-center group">
-                <div className="w-14 h-14 rounded-2xl bg-brand-gradient shadow-brand flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <div
+                  className="w-14 h-14 rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-500/25 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: "linear-gradient(135deg, #1A73FF 0%, #3B82F6 100%)" }}
+                >
                   <cap.Icon className="w-7 h-7 text-white" aria-hidden="true" />
                 </div>
                 <h3 className="font-display font-bold text-[var(--text-primary)] text-xl mb-3">
