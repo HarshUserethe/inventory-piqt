@@ -20,7 +20,7 @@ function TextRollButton({ label, href, primary = false }: TextRollButtonProps) {
       href={href}
       aria-label={label}
       className={cn(
-        "group relative inline-flex items-center justify-center h-[46px] px-8 rounded-full text-[18px] font-medium transition-all duration-300 overflow-hidden select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/80",
+        "group relative inline-flex items-center justify-center h-[40px] sm:h-[42px] px-6 rounded-full text-[15px] sm:text-[16px] font-semibold transition-all duration-300 overflow-hidden select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/80",
         primary
           ? "bg-[#1A73FF] text-white hover:bg-blue-600 shadow-lg shadow-blue-500/20 dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:shadow-white/10 hover:scale-105 active:scale-95"
           : "bg-white text-slate-800 border border-slate-300 hover:border-slate-400 hover:bg-slate-100 dark:bg-transparent dark:text-white dark:border-white/20 dark:hover:border-white/40 dark:hover:bg-white/5 hover:scale-105 active:scale-95 shadow-sm dark:shadow-none"
@@ -74,7 +74,7 @@ export default function AboutHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[85svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden flex flex-col justify-center items-center pt-32 pb-20 md:pt-40 md:pb-28 transition-colors duration-300"
+      className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden flex flex-col justify-center items-center pt-32 pb-20 md:pt-40 md:pb-28 transition-colors duration-300"
       aria-label="About Process IQ Tech"
     >
       {/* ── Soft Blue Vignette Glow (GPU Accelerated) ── */}

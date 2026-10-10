@@ -48,7 +48,7 @@ export default function ServicesHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[90svh] sm:min-h-[95svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-visible z-10 flex flex-col justify-between items-center pt-32 pb-16 sm:pb-24 transition-colors duration-300"
+      className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-visible z-10 flex flex-col justify-between items-center pt-32 pb-16 sm:pb-24 transition-colors duration-300"
       aria-label="Process IQ Tech Service Portfolio"
     >
       {/* Soft Blue Vignette Glow */}

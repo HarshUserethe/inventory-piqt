@@ -81,7 +81,7 @@ export default function Navbar() {
           {/* Center: Nav links */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-8"
+            className="hidden md:flex items-center gap-7 lg:gap-8"
           >
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
@@ -90,10 +90,10 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   className={cn(
-                    "text-[17px] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-md px-1 py-0.5",
+                    "text-[14px] sm:text-[15px] tracking-wide transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-md px-1 py-0.5",
                     isActive
                       ? "text-slate-900 dark:text-white font-semibold"
-                      : "text-slate-600 dark:text-[#a1a1a1] hover:text-slate-900 dark:hover:text-white font-normal"
+                      : "text-slate-600 dark:text-[#a1a1a1] hover:text-slate-900 dark:hover:text-white font-medium"
                   )}
                 >
                   {link.label}
@@ -103,17 +103,17 @@ export default function Navbar() {
           </nav>
 
           {/* Right: Theme Toggle + Phone Number + "Let's Connect" CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3.5">
             {/* Theme-toggle switch */}
             <button
               onClick={toggleTheme}
               aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-              className="relative w-[56px] h-[30px] rounded-full bg-slate-200 dark:bg-[#1e1e1e] border border-slate-300 dark:border-white/10 p-1 transition-colors hover:border-slate-400 dark:hover:border-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 cursor-pointer"
+              className="relative w-[50px] h-[26px] rounded-full bg-slate-200 dark:bg-[#1e1e1e] border border-slate-300 dark:border-white/10 p-0.5 transition-colors hover:border-slate-400 dark:hover:border-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 cursor-pointer"
             >
               <div
                 className={cn(
-                  "w-[22px] h-[22px] rounded-full bg-white dark:bg-white shadow-md transition-transform duration-300 ease-out flex items-center justify-center",
-                  isDarkMode ? "translate-x-[24px]" : "translate-x-0"
+                  "w-[20px] h-[20px] rounded-full bg-white dark:bg-white shadow-md transition-transform duration-300 ease-out flex items-center justify-center",
+                  isDarkMode ? "translate-x-[22px]" : "translate-x-0"
                 )}
               >
                 {isDarkMode ? (
@@ -128,16 +128,16 @@ export default function Navbar() {
             <a
               href="tel:+919515783300"
               aria-label="Call Process IQ Tech"
-              className="inline-flex items-center gap-2 text-[15px] font-medium text-slate-700 dark:text-white/90 hover:text-slate-900 dark:hover:text-white transition-colors px-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
+              className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] font-medium text-slate-700 dark:text-white/90 hover:text-slate-900 dark:hover:text-white transition-colors px-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
             >
-              <Phone className="w-4 h-4 text-[#1A73FF]" />
+              <Phone className="w-3.5 h-3.5 text-[#1A73FF]" />
               <span>+91 9515783300</span>
             </a>
 
             {/* Pill button "Let's Connect" */}
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center h-[48px] px-7 rounded-full bg-[#1A73FF] text-white dark:bg-white dark:text-black text-[17px] font-medium transition-all hover:bg-blue-600 dark:hover:bg-neutral-200 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/80"
+              className="inline-flex items-center justify-center h-[40px] px-5 sm:px-6 rounded-full bg-[#1A73FF] text-white dark:bg-white dark:text-black text-[14px] sm:text-[15px] font-semibold transition-all hover:bg-blue-600 dark:hover:bg-neutral-200 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/80 shadow-md shadow-blue-500/15"
             >
               Let&apos;s Connect
             </Link>

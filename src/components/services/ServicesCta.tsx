@@ -18,7 +18,7 @@ function TextRollButton({ label, href, primary = false }: TextRollButtonProps) {
       href={href}
       aria-label={label}
       className={cn(
-        "group relative inline-flex items-center justify-center h-[46px] px-8 rounded-full text-[18px] font-medium transition-all duration-300 overflow-hidden select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/80",
+        "group relative inline-flex items-center justify-center h-[40px] sm:h-[42px] px-6 rounded-full text-[15px] sm:text-[16px] font-semibold transition-all duration-300 overflow-hidden select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/80",
         primary
           ? "bg-white text-black hover:bg-neutral-100 hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
           : "bg-transparent text-white border border-white/20 hover:border-white/40 hover:bg-white/5 hover:scale-105 active:scale-95"

@@ -26,7 +26,7 @@ export default function WhyUsHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[88svh] sm:min-h-[92svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden z-10 flex flex-col justify-between items-center pt-32 pb-16 sm:pb-20 transition-colors duration-300"
+      className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden z-10 flex flex-col justify-between items-center pt-32 pb-16 sm:pb-20 transition-colors duration-300"
       aria-label="Why Process IQ Tech"
     >
       {/* Soft Blue Vignette Glow */}

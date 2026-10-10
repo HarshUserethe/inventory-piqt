@@ -18,7 +18,7 @@ export default function CareersHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[85svh] sm:min-h-[90svh] bg-black text-white overflow-hidden z-10 flex flex-col justify-between items-center pt-32 pb-20 transition-colors duration-300"
+      className="relative min-h-[100svh] bg-black text-white overflow-hidden z-10 flex flex-col justify-between items-center pt-32 pb-20 transition-colors duration-300"
       aria-label="Process IQ Tech Careers"
     >
       {/* Full-Screen Autoplay Background Video */}
