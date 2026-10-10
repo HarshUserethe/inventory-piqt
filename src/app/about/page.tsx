@@ -165,7 +165,7 @@ export default function AboutPage() {
       <section className="py-20 bg-[#0A0B10] relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
-          style={{ background: "radial-gradient(circle at 50% 50%, #E11D2E 0%, transparent 60%)" }}
+          style={{ background: "radial-gradient(circle at 50% 50%, #1A73FF 0%, transparent 60%)" }}
           aria-hidden="true"
         />
         <div className="container-custom text-center relative z-10">

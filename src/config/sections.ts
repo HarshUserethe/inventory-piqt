@@ -86,7 +86,7 @@ export const siteSections: SiteSectionsConfig = {
     process: true,
     technology: true,
     industries: false,
-    testimonials: true,
+    testimonials: false,
     whyUs: true,
     ctaBanner: true,
   },

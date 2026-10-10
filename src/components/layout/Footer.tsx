@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Linkedin, Twitter, Youtube, Facebook } from "@/components/ui/BrandIcons";
@@ -23,15 +22,13 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" aria-label="Process IQ Tech — Home" className="inline-block mb-5">
-              {/* Footer always uses white logo */}
-              <Image
-                src="/logo-white.png"
-                alt="Process IQ Tech"
-                width={635}
-                height={166}
-                className="h-9 w-auto object-contain"
-              />
+            <Link href="/" aria-label="ProcessIQTech — Home" className="flex items-center gap-2.5 mb-5 group">
+              <div className="w-8 h-8 rounded-lg bg-white text-black flex items-center justify-center font-extrabold text-lg tracking-tighter group-hover:scale-105 transition-transform">
+                P
+              </div>
+              <span className="text-[24px] font-bold text-white tracking-tight">
+                ProcessIQ<span className="text-[#1A73FF]">Tech</span>
+              </span>
             </Link>
 
             <p className="text-neutral-400 text-sm leading-relaxed mb-8 max-w-xs">

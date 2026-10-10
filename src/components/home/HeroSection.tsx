@@ -1,146 +1,162 @@
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronRight } from "lucide-react";
-import { heroContent } from "@/config/homepage";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-import MoltenMetal from "@/components/ui/MoltenMetal";
-import { TextSplitReveal } from "@/components/ui/TextSplitReveal";
+// ── Per-Letter Text Roll Button ──
+interface TextRollButtonProps {
+  label: string;
+  href: string;
+  primary?: boolean;
+}
 
+function TextRollButton({ label, href, primary = false }: TextRollButtonProps) {
+  const letters = Array.from(label);
+
+  return (
+    <Link
+      href={href}
+      aria-label={label}
+      className={cn(
+        "group relative inline-flex items-center justify-center h-[46px] px-8 rounded-full text-[18px] font-medium transition-all duration-300 overflow-hidden select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/80",
+        primary
+          ? "bg-[#1A73FF] text-white hover:bg-blue-600 shadow-lg shadow-blue-500/20 dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:shadow-white/10 hover:scale-105 active:scale-95"
+          : "bg-white text-slate-800 border border-slate-300 hover:border-slate-400 hover:bg-slate-100 dark:bg-transparent dark:text-white dark:border-white/20 dark:hover:border-white/40 dark:hover:bg-white/5 hover:scale-105 active:scale-95 shadow-sm dark:shadow-none"
+      )}
+    >
+      <span className="relative inline-flex overflow-hidden py-1">
+        {/* Top layer (slides UP) */}
+        <span className="inline-flex">
+          {letters.map((char, i) => (
+            <span
+              key={`top-${i}`}
+              className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-[130%]"
+              style={{
+                transitionDelay: `${i * 15}ms`,
+              }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </span>
+
+        {/* Bottom layer (slides IN FROM BELOW) */}
+        <span className="absolute inset-0 inline-flex" aria-hidden="true">
+          {letters.map((char, i) => (
+            <span
+              key={`bot-${i}`}
+              className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-[130%] group-hover:translate-y-0"
+              style={{
+                transitionDelay: `${i * 15}ms`,
+              }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </span>
+      </span>
+    </Link>
+  );
+}
+
+// ── Main Hero Section ──
 export default function HeroSection() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Parallax scroll effect
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const glowY = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: "#0A0B10" }}
-      aria-label="Hero"
+      ref={sectionRef}
+      className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden flex flex-col justify-center items-center pt-28 pb-16 md:pt-36 md:pb-24 transition-colors duration-300"
+      aria-label="Visuvate Hero"
     >
-      {/* ── Background ── */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
-        <MoltenMetal
-          color1="#5227FF"
-          color2="#FF9FFC"
-          color3="#FFFFFF"
-          speed={0.35}
-          scale={4}
-          detail={3}
-          glow={1.6}
-          coreSize={0.1}
-          swirl={1}
-          fold={-0.2}
-          blackPoint={0.05}
-          brightness={1.3}
-          colorMode="molten"
-          grain
-          grainIntensity={0.05}
-          mouseInteraction
-          mouseStrength={0.3}
-          opacity={1}
-        />
-        {/* Subtle top gradient */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      </div>
+      {/* ── Soft Blue Vignette Glow (GPU Accelerated) ── */}
+      <motion.div
+        className="hero-glow-container"
+        style={{ y: glowY, willChange: "transform", transform: "translateZ(0)" }}
+        aria-hidden="true"
+      >
+        <div className="hero-glow-left" />
+        <div className="hero-glow-right" />
+        <div className="hero-glow-bottom" />
+      </motion.div>
 
-      {/* ── Content ── */}
-      <div className="container-custom relative z-10 w-full pt-28 pb-16 lg:pt-32 lg:pb-20 flex flex-col items-center text-center">
-        {/* Eyebrow badge */}
-        <div className="inline-flex items-center gap-2.5 mb-6 animate-fade-in">
-          <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand-600/10 border border-brand-600/20 text-brand-400 text-xs font-semibold tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse-dot" />
-            {heroContent.badge}
-          </span>
-        </div>
+      {/* ── Centered Hero Content Column ── */}
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 text-center flex flex-col items-center justify-center my-auto">
 
-        {/* Headline */}
-        <h1
-          className="font-display font-extrabold text-white leading-[1.05] tracking-tight mb-6 max-w-7xl w-full mx-auto"
-          style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.75rem)" }}
+        {/* Eyebrow Pill */}
+        <motion.div
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-6"
         >
-          <TextSplitReveal text={heroContent.headline} delay={100} />{" "}
-          <span className="animate-shiny-text inline" style={{ animationDelay: "1s" }}>
-            {heroContent.headlineAccent}
+          <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/90 dark:bg-black/60 border border-slate-200/80 dark:border-white/15 backdrop-blur-md text-slate-800 dark:text-white text-[16px] font-semibold tracking-wide shadow-sm dark:shadow-none transition-colors duration-300">
+            <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-500 animate-pulse" />
+            Global BPM & Call Center Solutions
+          </div>
+        </motion.div>
+
+        {/* Signature Mixed Sans + Serif Headline */}
+        <h1 className="signature-headline max-w-6xl mx-auto mb-6 relative z-20">
+          {/* Line 1 */}
+          <span className="block overflow-hidden pb-2 pt-1">
+            <motion.span
+              initial={{ y: "100%", opacity: 0 }}
+              animate={{ y: "0%", opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-block relative z-20"
+            >
+              <span className="sans mr-3 sm:mr-5">Connecting</span>
+              <span className="serif italic">Businesses</span>
+            </motion.span>
+          </span>
+
+          {/* Line 2 */}
+          <span className="block overflow-hidden pb-3 pt-1">
+            <motion.span
+              initial={{ y: "100%", opacity: 0 }}
+              animate={{ y: "0%", opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-block relative z-20"
+            >
+              <span className="serif italic mr-3 sm:mr-5">With</span>
+              <span className="sans">Excellence</span>
+            </motion.span>
           </span>
         </h1>
 
-        {/* Description — desktop */}
-        <p className="hidden sm:block text-neutral-300 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-in delay-200"
-           style={{ fontSize: "1.0625rem" }}>
-          {heroContent.description}
-        </p>
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="text-slate-600 dark:text-[#a1a1a1] text-[20px] md:text-[18px] font-normal max-w-4xl mx-auto mb-10 leading-relaxed transition-colors duration-300"
+        >
+          We are a 24/7 global call center empowering businesses with dedicated, accent-neutral customer support and business specialists. We fill operational gaps, helping business owners achieve seamless customer relations and scale efficiently.
+        </motion.p>
 
-        {/* Description — mobile (expandable) */}
-        <div className="block sm:hidden mb-8 max-w-md mx-auto animate-fade-in delay-200">
-          <p className="text-neutral-300 leading-relaxed text-[0.9375rem]">
-            We are a 24/7 global call center empowering businesses with dedicated, accent-neutral customer support and business specialists
-            {isExpanded ? (
-              <>
-                . We fill operational gaps, helping business owners achieve seamless customer relations and scale efficiently.{" "}
-                <button
-                  onClick={() => setIsExpanded(false)}
-                  className="text-white font-semibold underline underline-offset-2 cursor-pointer"
-                >
-                  show less
-                </button>
-              </>
-            ) : (
-              <>
-                ...{" "}
-                <button
-                  onClick={() => setIsExpanded(true)}
-                  className="text-white font-semibold underline underline-offset-2 cursor-pointer"
-                >
-                  read more
-                </button>
-              </>
-            )}
-          </p>
-        </div>
-
-        {/* CTAs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in delay-300">
-          <Link
-            href={heroContent.primaryCta.href}
-            id="hero-cta-primary"
-            className="btn-primary text-base px-7 h-12 group"
-          >
-            <span>{heroContent.primaryCta.label}</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            href={heroContent.secondaryCta.href}
-            id="hero-cta-secondary"
-            className="btn-ghost text-base px-7 h-12 group"
-          >
-            <span>{heroContent.secondaryCta.label}</span>
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </div>
-
-        {/* Trusted by strip */}
-        <div className="animate-fade-in delay-400">
-          <p className="text-[0.7rem] font-semibold text-neutral-500 uppercase tracking-[0.14em] mb-4">
-            Trusted by enterprise leaders
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 items-center">
-            {heroContent.trustedBy.map((brand) => (
-              <span
-                key={brand}
-                className="px-4 py-1.5 rounded-lg bg-white/5 border border-white/10 text-neutral-400 text-sm font-semibold"
-              >
-                {brand}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40 pointer-events-none animate-bounce" aria-hidden="true">
-        <div className="w-px h-8 bg-gradient-to-b from-transparent to-white/50" />
-        <div className="w-1.5 h-1.5 rounded-full bg-white/50" />
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-wrap items-center justify-center gap-4"
+        >
+          <TextRollButton label="Get in touch" href="/contact" primary />
+          <TextRollButton label="Our services" href="/services" />
+        </motion.div>
       </div>
     </section>
   );
 }
+
