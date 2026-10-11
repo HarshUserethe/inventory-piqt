@@ -22,10 +22,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" aria-label="ProcessIQTech — Home" className="flex items-center gap-2.5 mb-5 group">
-              <div className="w-8 h-8 rounded-lg bg-white text-black flex items-center justify-center font-extrabold text-lg tracking-tighter group-hover:scale-105 transition-transform">
-                P
-              </div>
+            <Link href="/" aria-label="ProcessIQTech — Home" className="flex items-center mb-5 group">
               <span className="text-[24px] font-bold text-white tracking-tight">
                 ProcessIQ<span className="text-[#1A73FF]">Tech</span>
               </span>
