@@ -108,3 +108,34 @@ export const benefits = [
   { label: "Home Office", icon: "Home", detail: "$1,500 setup stipend" },
   { label: "Parental Leave", icon: "Baby", detail: "20 weeks fully paid" },
 ];
+
+export const bpoStartupRoles = [
+  "Operations Manager",
+  "Business Development Manager",
+  "Business Development Executive",
+  "Client Relationship Manager",
+  "Project Manager",
+  "Team Leader",
+  "Customer Support Executive",
+  "Customer Service Representative",
+  "Inbound Process Executive",
+  "Outbound Process Executive",
+  "International Voice Process Executive",
+  "Non-Voice Process Executive",
+  "Technical Support Executive",
+  "Back Office Executive",
+  "Quality Analyst",
+  "Trainer / Process Trainer",
+  "HR Manager",
+  "HR Executive",
+  "Talent Acquisition / Recruiter",
+  "MIS Executive",
+  "IT Support Executive",
+  "System Administrator",
+  "Accountant / Finance Executive",
+  "Admin Executive",
+  "Digital Marketing Executive",
+  "Sales Executive",
+  "Lead Generation Executive"
+];
+
