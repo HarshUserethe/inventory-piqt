@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { siteConfig } from "@/config/site";
 
 const fontSans = localFont({
   src: [
@@ -55,8 +56,8 @@ const fontSerif = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Visuvate | Premium Digital Agency & Design Studio",
-    template: "%s | Visuvate",
+    default: "Process IQ Tech | Premium Digital Agency & Design Studio",
+    template: "%s | Process IQ Tech",
   },
   description:
     "Crafted websites, lasting impressions. Premium web design and development studio.",
@@ -66,22 +67,22 @@ export const metadata: Metadata = {
     "Digital Agency",
     "Web Development",
     "UI/UX Design",
-    "Visuvate",
+    "Process IQ Tech",
   ],
-  authors: [{ name: "Visuvate" }],
-  creator: "Visuvate",
-  metadataBase: new URL("https://visuvate.com"),
+  authors: [{ name: "Process IQ Tech" }],
+  creator: "Process IQ Tech",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || siteConfig.url),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://visuvate.com",
-    siteName: "Visuvate",
-    title: "Visuvate | Premium Digital Agency",
+    url: process.env.NEXT_PUBLIC_APP_URL || siteConfig.url,
+    siteName: "Process IQ Tech",
+    title: "Process IQ Tech | Premium Digital Agency",
     description: "Crafted websites, lasting impressions.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Visuvate",
+    title: "Process IQ Tech",
     description: "Crafted websites, lasting impressions.",
   },
   robots: {

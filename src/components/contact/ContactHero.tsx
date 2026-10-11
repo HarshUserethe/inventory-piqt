@@ -104,9 +104,7 @@ export default function ContactHero() {
         className="relative z-10 flex flex-col items-center gap-2 text-slate-400 dark:text-neutral-500 hover:text-[#1A73FF] dark:hover:text-blue-400 transition-colors group cursor-pointer pb-2"
         aria-label="Scroll to contact form"
       >
-        <span className="text-[11px] uppercase tracking-widest font-semibold text-slate-400 dark:text-neutral-500 group-hover:text-[#1A73FF] dark:group-hover:text-blue-400 transition-colors">
-          Scroll to Form
-        </span>
+
         <div className="w-8 h-8 rounded-full border border-slate-200 dark:border-white/10 flex items-center justify-center group-hover:border-blue-500/50 transition-colors">
           <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#1A73FF] dark:text-[#3B82F6]" />
         </div>
