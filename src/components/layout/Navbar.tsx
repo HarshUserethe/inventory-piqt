@@ -65,7 +65,7 @@ export default function Navbar() {
           {/* Left: Logo */}
           <Link
             href="/"
-            aria-label="ProcessIQTech Home"
+            aria-label="Process IQ Tech Home"
             className="flex items-center group focus:outline-none"
           >
             {/* Wordmark */}

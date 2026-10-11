@@ -77,7 +77,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden flex flex-col justify-between items-center pt-[12svh] pb-16 sm:pt-[14svh] md:pt-36 md:pb-24 transition-colors duration-300"
-      aria-label="Visuvate Hero"
+      aria-label="Process IQ Tech Hero"
     >
       {/* ── Soft Blue Vignette Glow (GPU Accelerated) ── */}
       <motion.div
