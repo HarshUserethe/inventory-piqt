@@ -692,6 +692,7 @@
   z-index: 20;
   -webkit-font-smoothing: antialiased;
   transition: color 0.3s ease;
+  overflow-wrap: break-word;
 }
 
 .dark .signature-headline {
@@ -700,8 +701,14 @@
 
 @media (max-width: 768px) {
   .signature-headline {
-    font-size: clamp(2rem, 8.5vw, 3.2rem);
-    line-height: 1.15;
+    font-size: clamp(2.4rem, 9.5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+  .home-hero-headline {
+    font-size: 3.5rem !important;
+    line-height: 0.92 !important;
+    text-align: left !important;
   }
 }
 

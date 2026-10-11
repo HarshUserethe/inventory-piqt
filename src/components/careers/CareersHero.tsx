@@ -18,7 +18,7 @@ export default function CareersHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100svh] bg-black text-white overflow-hidden z-10 flex flex-col justify-between items-center pt-32 pb-20 transition-colors duration-300"
+      className="relative min-h-[100svh] bg-black text-white overflow-hidden z-10 flex flex-col justify-between items-center pt-[12svh] pb-16 sm:pt-[14svh] sm:pb-20 md:pt-36 transition-colors duration-300"
       aria-label="Process IQ Tech Careers"
     >
       {/* Full-Screen Autoplay Background Video */}
@@ -50,7 +50,7 @@ export default function CareersHero() {
       </motion.div>
 
       {/* Centered Hero Content */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 text-center flex flex-col items-center justify-center my-auto">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 text-center flex flex-col items-center w-full">
         {/* Eyebrow Pill */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}
@@ -66,7 +66,7 @@ export default function CareersHero() {
 
         {/* Signature Mixed Sans + Serif Headline */}
         <h1 className="signature-headline max-w-6xl mx-auto mb-6 relative z-20 text-white">
-          <span className="block overflow-hidden pb-2 pt-1">
+          <span className="block overflow-hidden pb-3 sm:pb-2 pt-1">
             <motion.span
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
@@ -84,7 +84,7 @@ export default function CareersHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="text-slate-200 text-[18px] sm:text-[20px] font-normal max-w-4xl mx-auto leading-relaxed transition-colors duration-300 mb-8 drop-shadow-sm"
+          className="text-slate-200 text-[17px] md:text-[18px] font-normal max-w-4xl mx-auto leading-relaxed transition-colors duration-300 mb-8 drop-shadow-sm"
         >
           {careersHero.description}
         </motion.p>
@@ -111,7 +111,7 @@ export default function CareersHero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.7 }}
-        className="relative z-10 w-full max-w-4xl mx-auto px-4"
+        className="relative z-10 w-full max-w-4xl mx-auto px-4 mt-auto pt-6 sm:pt-8"
       >
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-xs sm:text-sm font-semibold text-slate-200 shadow-md">
