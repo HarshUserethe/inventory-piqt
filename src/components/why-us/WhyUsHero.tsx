@@ -26,7 +26,7 @@ export default function WhyUsHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden z-10 flex flex-col justify-between items-center pt-32 pb-16 sm:pb-20 transition-colors duration-300"
+      className="relative min-h-[100svh] bg-[#FAFAFC] dark:bg-black text-slate-900 dark:text-white overflow-hidden z-10 flex flex-col justify-between items-center pt-[12svh] pb-16 sm:pt-[14svh] sm:pb-20 md:pt-36 transition-colors duration-300"
       aria-label="Why Process IQ Tech"
     >
       {/* Soft Blue Vignette Glow */}
@@ -41,7 +41,7 @@ export default function WhyUsHero() {
       </motion.div>
 
       {/* Centered Hero Content */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 text-center flex flex-col items-center justify-center my-auto">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 sm:px-8 text-center flex flex-col items-center w-full">
         {/* Eyebrow Pill */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}
@@ -57,7 +57,7 @@ export default function WhyUsHero() {
 
         {/* Signature Mixed Sans + Serif Headline */}
         <h1 className="signature-headline max-w-6xl mx-auto mb-6 relative z-20">
-          <span className="block overflow-hidden pb-2 pt-1">
+          <span className="block overflow-hidden pb-3 sm:pb-2 pt-1">
             <motion.span
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
@@ -75,7 +75,7 @@ export default function WhyUsHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="text-slate-600 dark:text-[#a1a1a1] text-[18px] sm:text-[20px] font-normal max-w-4xl mx-auto leading-relaxed transition-colors duration-300 mb-8"
+          className="text-slate-600 dark:text-[#a1a1a1] text-[17px] md:text-[18px] font-normal max-w-4xl mx-auto leading-relaxed transition-colors duration-300 mb-8"
         >
           {whyUsHero.description}
         </motion.p>
@@ -86,7 +86,7 @@ export default function WhyUsHero() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 mt-8 sm:mt-12"
+        className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 mt-auto pt-8 sm:pt-12"
       >
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
           {differentiators.map((diff, idx) => {

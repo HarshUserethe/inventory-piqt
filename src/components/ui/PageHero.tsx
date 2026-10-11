@@ -90,10 +90,9 @@ export function PageHero({
         {/* Title */}
         <h1
           className={cn(
-            "font-display font-extrabold text-slate-900 dark:text-white leading-[1.05] tracking-tight mb-5 max-w-5xl",
+            "signature-headline font-display font-extrabold text-slate-900 dark:text-white leading-[1.05] tracking-tight mb-5 max-w-5xl",
             centered && "mx-auto"
           )}
-          style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
         >
           {title}{" "}
           {titleAccent && (
