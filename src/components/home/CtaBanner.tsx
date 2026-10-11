@@ -101,12 +101,12 @@ export default function CtaBanner() {
                 Schedule a free 60-minute process assessment with one of our senior experts.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3 shrink-0">
-              <Link href="/contact" className="btn-primary">
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 shrink-0 w-full md:w-auto">
+              <Link href="/contact" className="btn-primary justify-center">
                 Start Free Assessment
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/services" className="btn-ghost">
+              <Link href="/services" className="btn-ghost justify-center">
                 Explore Services
               </Link>
             </div>
