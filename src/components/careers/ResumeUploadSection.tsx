@@ -2,7 +2,7 @@
 
 import { useState, useRef, DragEvent, ChangeEvent, useEffect } from "react";
 import { Upload, FileText, CheckCircle2, X, Send, Mail, User, Briefcase, Phone } from "lucide-react";
-import { openRoles } from "@/config/careers";
+import { bpoStartupRoles } from "@/config/careers";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +17,7 @@ export default function ResumeUploadSection({ selectedRoleTitle }: ResumeUploadS
     fullName: "",
     email: "",
     phone: "",
-    position: selectedRoleTitle || "General Application / Other",
+    position: selectedRoleTitle || bpoStartupRoles[0],
     experience: "3-5 years",
     coverNote: "",
   });
@@ -110,7 +110,7 @@ export default function ResumeUploadSection({ selectedRoleTitle }: ResumeUploadS
       fullName: "",
       email: "",
       phone: "",
-      position: "General Application / Other",
+      position: bpoStartupRoles[0],
       experience: "3-5 years",
       coverNote: "",
     });
@@ -242,14 +242,11 @@ export default function ResumeUploadSection({ selectedRoleTitle }: ResumeUploadS
                       <select
                         value={formData.position}
                         onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-                        className="w-full bg-slate-50/80 dark:bg-black/60 border border-slate-200 dark:border-white/15 rounded-xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 focus:ring-1 focus:ring-blue-600 dark:focus:ring-blue-500 text-sm transition-all duration-200 appearance-none cursor-pointer"
+                        className="w-full bg-slate-50/80 dark:bg-black/60 border border-slate-200 dark:border-white/15 rounded-xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 focus:ring-1 focus:ring-blue-600 dark:focus:ring-blue-500 text-sm transition-all duration-200 cursor-pointer"
                       >
-                        <option value="General Application / Other" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
-                          General Application / Other
-                        </option>
-                        {openRoles.map((role) => (
-                          <option key={role.id} value={role.title} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
-                            {role.title} ({role.department})
+                        {bpoStartupRoles.map((role) => (
+                          <option key={role} value={role} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
+                            {role}
                           </option>
                         ))}
                       </select>

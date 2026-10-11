@@ -66,12 +66,8 @@ export default function Navbar() {
           <Link
             href="/"
             aria-label="ProcessIQTech Home"
-            className="flex items-center gap-2.5 group focus:outline-none"
+            className="flex items-center group focus:outline-none"
           >
-            {/* Logo Mark Icon */}
-            <div className="w-8 h-8 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-black flex items-center justify-center font-extrabold text-lg tracking-tighter group-hover:scale-105 transition-transform">
-              P
-            </div>
             {/* Wordmark */}
             <span className="text-[24px] font-bold text-slate-900 dark:text-white tracking-tight">
               ProcessIQ<span className="text-[#1A73FF]">Tech</span>
@@ -182,10 +178,7 @@ export default function Navbar() {
       >
         {/* Top bar inside menu */}
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-            <div className="w-8 h-8 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-black flex items-center justify-center font-extrabold text-lg">
-              P
-            </div>
+          <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
             <span className="text-[22px] font-bold text-slate-900 dark:text-white">
               ProcessIQ<span className="text-[#1A73FF]">Tech</span>
             </span>
