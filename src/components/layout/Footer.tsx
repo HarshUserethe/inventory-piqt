@@ -5,8 +5,8 @@ import { siteConfig, footerLinks } from "@/config/site";
 
 const socialIcons = {
   linkedin: Linkedin,
-  twitter:  Twitter,
-  youtube:  Youtube,
+  twitter: Twitter,
+  youtube: Youtube,
   facebook: Facebook,
 };
 
@@ -22,7 +22,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" aria-label="ProcessIQTech — Home" className="flex items-center mb-5 group">
+            <Link href="/" aria-label="Process IQ Tech — Home" className="flex items-center mb-5 group">
               <span className="text-[24px] font-bold text-white tracking-tight">
                 ProcessIQ<span className="text-[#1A73FF]">Tech</span>
               </span>
