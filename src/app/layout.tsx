@@ -7,6 +7,8 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { siteConfig } from "@/config/site";
+import { siteSections } from "@/config/sections";
+import MaintenancePage from "@/components/maintenance/MaintenancePage";
 
 const fontSans = localFont({
   src: [
@@ -96,6 +98,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  /* ---- MAINTENANCE MODE ---- */
+  if (siteSections.maintenanceMode) {
+    return (
+      <html
+        lang="en"
+        className={`dark ${fontSans.variable} ${fontSerif.variable}`}
+        suppressHydrationWarning
+      >
+        <body className="antialiased font-sans bg-black text-white" suppressHydrationWarning>
+          <MaintenancePage />
+        </body>
+      </html>
+    );
+  }
+
+  /* ---- NORMAL LAYOUT ---- */
   return (
     <html
       lang="en"

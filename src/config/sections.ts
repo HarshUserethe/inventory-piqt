@@ -3,6 +3,13 @@
 // ============================================================
 // Use this file to manage the visibility of sections across the website.
 // Change boolean values to true (enable/show) or false (disable/hide).
+//
+// ┌─────────────────────────────────────────────────────────┐
+// │  MAINTENANCE MODE                                       │
+// │  Set `maintenanceMode: true` to replace the entire      │
+// │  website with the Maintenance page on every route.      │
+// │  Set `maintenanceMode: false` to restore normal site.   │
+// └─────────────────────────────────────────────────────────┘
 
 export interface CareersSectionsConfig {
   hero: boolean;
@@ -54,6 +61,15 @@ export interface FaqsSectionsConfig {
 }
 
 export interface SiteSectionsConfig {
+  /**
+   * Global maintenance mode toggle.
+   *
+   * - `true`  → every URL renders the "We're Down for Maintenance" page;
+   *             the Navbar, Footer and all page content are hidden.
+   * - `false` → normal website experience.
+   */
+  maintenanceMode: boolean;
+
   careers: CareersSectionsConfig;
   homepage: HomepageSectionsConfig;
   about: AboutSectionsConfig;
@@ -63,6 +79,11 @@ export interface SiteSectionsConfig {
 }
 
 export const siteSections: SiteSectionsConfig = {
+  // ------------------------------------------------------------
+  // MAINTENANCE MODE — flip to true to enable the maintenance page
+  // ------------------------------------------------------------
+  maintenanceMode: false,
+
   // ------------------------------------------------------------
   // Careers Page Configuration
   // ------------------------------------------------------------
