@@ -98,9 +98,40 @@ export default function ResumeUploadSection({ selectedRoleTitle }: ResumeUploadS
     }
 
     setSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    setSubmitting(false);
-    setSubmitted(true);
+
+    try {
+      const payload = new FormData();
+      payload.append("name", formData.fullName);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("position", formData.position);
+      payload.append("experience", formData.experience);
+      payload.append("coverNote", formData.coverNote);
+      payload.append("resume", file);
+
+      const response = await fetch("/api/apply", {
+        method: "POST",
+        body: payload,
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(
+          result?.message ?? "Something went wrong while submitting your application."
+        );
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setErrorMsg(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong while submitting your application."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const resetForm = () => {

@@ -31,14 +31,38 @@ export default function ContactFormSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg("");
     setSubmitting(true);
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1500));
-    setSubmitted(true);
-    setSubmitting(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(
+          result?.message ?? "Something went wrong while submitting your inquiry."
+        );
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setErrorMsg(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong while submitting your inquiry."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -182,6 +206,7 @@ export default function ContactFormSection() {
                       type="button"
                       onClick={() => {
                         setSubmitted(false);
+                        setErrorMsg("");
                         setFormData({
                           firstName: "",
                           lastName: "",
@@ -386,6 +411,12 @@ export default function ContactFormSection() {
                         and consent to being contacted by Process IQ Tech regarding my inquiry.
                       </label>
                     </div>
+
+                    {errorMsg && (
+                      <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-700 dark:text-rose-300 text-xs sm:text-sm flex items-center gap-2">
+                        <span>⚠️</span> {errorMsg}
+                      </div>
+                    )}
 
                     <button
                       type="submit"
